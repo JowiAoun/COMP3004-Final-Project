@@ -1,0 +1,41 @@
+classDiagram
+
+    %% Classes
+    class Control {
+        +void        addUser()
+        +void        deleteUser()
+        +void        updateUser()
+        +HealthData* processData()
+        +void        displayHistoricalData(QVector<HealthData*>)
+    }
+
+    class Hardware {
+        +int         battery
+        +bool        isLowPower()
+        +bool        gracefulShutdown()
+        +HealthData* takeMeasurements()
+    }
+
+    class User {
+        +QString name
+        +QString gender
+        +int     age
+        +float   weight
+        +float   height
+    }
+
+    class HealthData {
+        +float  energyLevel
+        +float  immuneSystem
+        +float  metabolism
+        +float  psychoEmotionalState
+        +float  musculoskeletalSystem
+        +time_t createdOn
+        +float  getAverage()
+        +void   displayData()
+    }
+
+    %% Relationships
+    Control "1" --> "0..5" User
+    Control "1" --> "1"    Hardware
+    User    "1" --> "0..*" HealthData
