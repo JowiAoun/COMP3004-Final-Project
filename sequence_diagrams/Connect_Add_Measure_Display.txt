@@ -1,0 +1,24 @@
+title Use Case: RaDoTech user adds user account and gets health data measured 
+participant Person
+
+participantgroup device
+participant View
+
+participant Hardware
+
+end
+participant Control
+
+participant User
+participant HealthData
+
+Person->View:connectButton()
+View->Control:connectToHardware()
+Control->Hardware:Hardware()
+Person->View:addUserButton()
+View->Control:addUser()
+Control->User:User()
+Person->View:takeMeasurementsButton()
+View->HealthData:takeMeasurements()
+HealthData->View:displayData()
+
