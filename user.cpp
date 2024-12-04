@@ -1,11 +1,23 @@
 #include "user.h"
 
+User::User() {
+  this->name = QString("");
+  this->gender = QString("");
+  this->age = 0;
+  this->weight = 0;
+  this->height = 0;
+}
+
 User::User(QString name, QString gender, int age, float weight, float height) {
   this->name = name;
   this->gender = gender;
   this->age = age;
   this->weight = weight;
   this->height = height;
+}
+
+User::~User() {
+
 }
 
 QString User::getName() const {
@@ -36,9 +48,44 @@ float User::setWeight(float weight) {
   this->weight = weight;
 }
 
-float User::setHeight() const {
+float User::getHeight() const {
   return this->height;
 }
-float User::getHeight(float height) {
+float User::setHeight(float height) {
   this->height = height;
+}
+
+template<class Archive>
+void User::serialize(Archive& ar, const unsigned int version) {
+    std::string nameStd = name.toStdString();
+    std::string genderStd = gender.toStdString();
+
+    ar & nameStd;
+    ar & genderStd;
+    ar & age;
+    ar & weight;
+    ar & height;
+
+    if constexpr (Archive::is_loading::value) {
+        name = QString::fromStdString(nameStd);
+        gender = QString::fromStdString(genderStd);
+    }
+}
+
+// Save user to file (free function)
+void saveUserToFile(const User& user, const std::string& filename) {
+    std::ofstream ofs(filename);
+    if (!ofs) throw std::runtime_error("Unable to open file for writing");
+    boost::archive::text_oarchive oa(ofs);
+    oa << user;
+}
+
+// Load user from file (free function)
+User loadUserFromFile(const std::string& filename) {
+    std::ifstream ifs(filename);
+    if (!ifs) throw std::runtime_error("Unable to open file for reading");
+    boost::archive::text_iarchive ia(ifs);
+    User user;
+    ia >> user;
+    return user;
 }

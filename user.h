@@ -11,6 +11,7 @@
 
 class User {
   public:
+    User();
     User(QString name, QString gender, int age, float weight, float height);
     ~User();
 
@@ -26,8 +27,8 @@ class User {
     float getWeight() const;
     float setWeight(float weight);
 
-    float setHeight() const;
-    float getHeight(float height);
+    float getHeight() const;
+    float setHeight(float height);
     
   private:
     QString name;
@@ -40,6 +41,9 @@ class User {
     friend class boost::serialization::access;
     template<class Archive>
     void serialize(Archive& ar, const unsigned int version);
-}
+};
+
+void saveUserToFile(const User& user, const std::string& filename);
+User loadUserFromFile(const std::string& filename);
 
 #endif // USER_H
