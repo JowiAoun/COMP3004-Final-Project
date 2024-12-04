@@ -72,20 +72,22 @@ void User::serialize(Archive& ar, const unsigned int version) {
     }
 }
 
-// Save user to file (free function)
-void saveUserToFile(const User& user, const std::string& filename) {
+void saveUsersToFile(const QVector<User>& users, const std::string& filename) {
     std::ofstream ofs(filename);
     if (!ofs) throw std::runtime_error("Unable to open file for writing");
+
     boost::archive::text_oarchive oa(ofs);
-    oa << user;
+    std::vector<User> stdUsers(users.begin(), users.end()); // Convert QVector to std::vector
+    oa << stdUsers;
 }
 
-// Load user from file (free function)
-User loadUserFromFile(const std::string& filename) {
+QVector<User> loadUsersFromFile(const std::string& filename) {
     std::ifstream ifs(filename);
     if (!ifs) throw std::runtime_error("Unable to open file for reading");
+
     boost::archive::text_iarchive ia(ifs);
-    User user;
-    ia >> user;
-    return user;
+    std::vector<User> stdUsers;
+    ia >> stdUsers;
+
+    return QVector<User>(stdUsers.begin(), stdUsers.end()); // Convert std::vector to QVectorstd::ifstream ifs(filename);
 }

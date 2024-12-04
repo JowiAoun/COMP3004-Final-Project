@@ -6,22 +6,24 @@
 
 int main(int argc, char *argv[])
 {
-    User user("Alice", "Female", 25, 55.0f, 165.0f);
+    QVector<User> users;
+    users.append(User("Alice", "Female", 25, 55.0f, 165.0f));
+    users.append(User("Bob", "Male", 30, 70.0f, 175.0f));
+    users.append(User("Charlie", "Non-Binary", 22, 65.0f, 170.0f));
 
-    std::string fileName = "user_data.txt";
+    saveUsersToFile(users, "users_data.txt");
 
-    // Save user to file
-    saveUserToFile(user, fileName);
+    QVector<User> loadedUsers = loadUsersFromFile("users_data.txt");
 
-    // Load user from file
-    User loadedUser = loadUserFromFile(fileName);
+    for (const User& user : loadedUsers) {
+        qDebug() << "Name:" << user.getName();
+        qDebug() << "Gender:" << user.getGender();
+        qDebug() << "Age:" << user.getAge();
+        qDebug() << "Weight:" << user.getWeight();
+        qDebug() << "Height:" << user.getHeight();
+    }
 
-    // Verify loaded data
-    qDebug() << "Name:" << loadedUser.getName();
-    qDebug() << "Gender:" << loadedUser.getGender();
-    qDebug() << "Age:" << loadedUser.getAge();
-    qDebug() << "Weight:" << loadedUser.getWeight();
-    qDebug() << "Height:" << loadedUser.getHeight();
+    return 0;
     /*
     QApplication a(argc, argv);
     MainWindow w;

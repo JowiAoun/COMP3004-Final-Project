@@ -4,6 +4,8 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 INCLUDEPATH += /usr/include/boost/
 
+LIBS += -lboost_serialization
+
 CONFIG += c++11
 
 # You can make your code fail to compile if it uses deprecated APIs.
