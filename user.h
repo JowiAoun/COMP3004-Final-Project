@@ -2,8 +2,10 @@
 #define USER_H
 
 #include "QString"
+#include "QVector"
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/string.hpp>
+#include <boost/serialization/vector.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include <fstream>
@@ -43,7 +45,7 @@ class User {
     void serialize(Archive& ar, const unsigned int version);
 };
 
-void saveUserToFile(const User& user, const std::string& filename);
-User loadUserFromFile(const std::string& filename);
+void saveUsersToFile(const QVector<User>& users, const std::string& filename);
+QVector<User> loadUsersFromFile(const std::string& filename);
 
 #endif // USER_H
