@@ -18,8 +18,8 @@ QString User::setName(QString name) {
 QString User::getGender() const {
   return this->gender;
 }
-QString User::setGender() {
-  this-gender = gender;
+QString User::setGender(QString gender) {
+  this->gender = gender;
 }
 
 int User::getAge() const {
