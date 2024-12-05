@@ -8,6 +8,9 @@ Control::~Control() {
     for (Hardware* hardware : connectedHardware) {
         delete hardware;
     }
+    for (User* user : currentUser) {
+        delete user;
+    }
 }
 
 void Control::addUser(const User& user) {
@@ -51,24 +54,58 @@ void Control::updateUser(const QString& name, const User& user) {
     saveUsersToFile(users, filepath);
 }
 
-// HealthData* Control::processData(rawdata? ) {
-// }
+bool Control::login(QString username, QString password) {
+    bool loggedIn = false;
+    QVector<User> users = loadUsersFromFile(filepath);
+    for (int i=0; i<users.size(); i++) {
+        if (users[i].getName() == name) {
+            currentUser.append(users[i]);
+            loggedIn = true;
+            qDebug() << "Logged in as user " << name;
+            break;
+        }
+    }
+    if (loggedIn == false) {
+        throw std::runtime_error("Wrong credentials");
+    }
+
+}
+
+bool Control::createAccount(QString username, QString password, QString name, int age, QString gender, float height, float weight) {
+    // TODO: need username and password variables in User
+    User newUser = new User(username, password, name, gender, age, weight, height);
+    addUser(user);
+}
+
+HealthData* Control::processData(rawdata? ) {
+    // save data to user file?
+}
 
 void Control::displayHistoricalData(const QVector<HealthData>& historicalData) {
     for (int i=0; i<historicalData.size(); i++) {
         historicalData[i].displayData();
     }
+    // what else
 }
 
 bool Control::connectToHardware(Hardware* hardware) {
     connectedHardware.append(hardware);
 }
 
-bool Control::createNewScan() {
+bool Control::createNewScan(const Hardware& hardware) {
+    // TODO: class
+    rawData = hardware.takeMeasurements();
+    HealthData* processedData = processData(rawData);
+    // TODO: handle currentUser 
+    QVector<HealthData*> historicalData = currentUser...
+    createCharts(historicalData);
+    displayHistoricalData();
 }
+
+
 bool Control::createCharts() {}
 
 
 void Control::listScans(const User& user) {
-    // displayHistoricalData();
+    // displayHistoricalData(); ??
 }

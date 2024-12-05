@@ -13,8 +13,11 @@ class Control {
         ~Control();
 
         void addUser(const User& user);
-        void deleteUser(const QString& name);
-        void updateUser(const QString& name, const User& user);
+        void deleteUser(QString name);
+        void updateUser(QString name, const User& user);
+        bool login(QString username, QString password);
+        bool createAccount(QString username, QString password, QString name, int age, QString gender, float height, float weight);
+
         //HealthData* processData(SomeRawData);
         void displayHistoricalData(const QVector<HealthData>& historicalData);
 
@@ -25,6 +28,7 @@ class Control {
         void listScans(const User& user);
     private:
         QVector<Hardware*> connectedHardware;
+        QVector<User*> currentUser;
 
 }
 
