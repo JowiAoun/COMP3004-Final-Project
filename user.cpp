@@ -1,7 +1,7 @@
 #include "user.h"
 
 User::User() {
-  this->username = QString("");
+  this->email = QString("");
   this->password = QString("");
   this->name = QString("");
   this->gender = QString("");
@@ -10,8 +10,8 @@ User::User() {
   this->height = 0;
 }
 
-User::User(QString username, QString password, QString name, QString gender, int age, float weight, float height) {
-  this->username = username;
+User::User(QString email, QString password, QString name, QString gender, int age, float weight, float height) {
+  this->email = email;
   this->password = password;
   this->name = name;
   this->gender = gender;
@@ -59,11 +59,11 @@ float User::setHeight(float height) {
   this->height = height;
 }
 
-QString User::getUsername() const {
-  return this->username;
+QString User::getEmail() const {
+  return this->email;
 }
-QString User::setUsername(QString username) {
-  this->username = username;
+QString User::setEmail(QString email) {
+  this->email = email;
 }
 
 QString User::getPassword() const {
@@ -78,10 +78,10 @@ template<class Archive>
 void User::serialize(Archive& ar, const unsigned int version) {
     std::string nameStd = name.toStdString();
     std::string genderStd = gender.toStdString();
-    std::string usernameStd = username.toStdString();
+    std::string emailStd = email.toStdString();
     std::string passwordStd = password.toStdString();
 
-    ar & usernameStd;
+    ar & emailStd;
     ar & passwordStd;
     ar & nameStd;
     ar & genderStd;
@@ -90,7 +90,7 @@ void User::serialize(Archive& ar, const unsigned int version) {
     ar & height;
 
     if constexpr (Archive::is_loading::value) {
-        username = QString::fromStdString(usernameStd);
+        email = QString::fromStdString(emailStd);
         password = QString::fromStdString(passwordStd);
         name = QString::fromStdString(nameStd);
         gender = QString::fromStdString(genderStd);
