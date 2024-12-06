@@ -14,7 +14,7 @@
 class User {
   public:
     User();
-    User(QString name, QString gender, int age, float weight, float height);
+    User(QString username, QString password, QString name, QString gender, int age, float weight, float height);
     ~User();
 
     QString getName() const;
@@ -32,12 +32,20 @@ class User {
     float getHeight() const;
     float setHeight(float height);
     
+    QString getUsername() const;
+    QString setUsername(QString username);
+
+    QString getPassword() const;
+    QString setPassword(QString password);
+
   private:
     QString name;
     QString gender;
     int     age;
     float   weight;
     float   height;
+    QString username;
+    QString password;
 
     // Allow serialization access to private members
     friend class boost::serialization::access;
