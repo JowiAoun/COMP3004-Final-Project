@@ -15,10 +15,10 @@ class Control {
         ~Control();
 
         void addUser(const User& user);
-        void deleteUser(QString name);
-        void updateUser(QString name, const User& user);
-        bool login(QString username, QString password);
-        bool createAccount(QString username, QString password, QString name, int age, QString gender, float height, float weight);
+        void deleteUser(QString email);
+        void updateUser(QString email, const User& user);
+        bool login(QString email, QString password);
+        bool createAccount(QString email, QString password, QString name, int age, QString gender, float height, float weight);
 
         HealthData* processData(const RawHealthData& rawHealthData);
         void displayHistoricalData(const QVector<HealthData>& historicalData);

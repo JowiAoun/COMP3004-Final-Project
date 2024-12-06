@@ -14,7 +14,7 @@
 class User {
   public:
     User();
-    User(QString username, QString password, QString name, QString gender, int age, float weight, float height);
+    User(QString email, QString password, QString name, QString gender, int age, float weight, float height);
     ~User();
 
     QString getName() const;
@@ -32,8 +32,8 @@ class User {
     float getHeight() const;
     float setHeight(float height);
     
-    QString getUsername() const;
-    QString setUsername(QString username);
+    QString getEmail() const;
+    QString setEmail(QString email);
 
     QString getPassword() const;
     QString setPassword(QString password);
@@ -44,7 +44,7 @@ class User {
     int     age;
     float   weight;
     float   height;
-    QString username;
+    QString email;
     QString password;
 
     // Allow serialization access to private members
