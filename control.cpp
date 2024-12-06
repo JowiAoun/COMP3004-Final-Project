@@ -33,8 +33,9 @@ void Control::deleteUser(const QString& name) {
     if (userExists == false) {
         throw std::runtime_error("User does not exist");
     }
-    qDebug() << "Deleted user " << name;
     saveUsersToFile(users, filepath);
+    qDebug() << "Deleted user " << name;
+
 }
 
 void Control::updateUser(const QString& name, const User& user) {
@@ -50,8 +51,9 @@ void Control::updateUser(const QString& name, const User& user) {
     if (userExists == false) {
         throw std::runtime_error("User does not exist");
     }
-    qDebug() << "Updated user " << name;
     saveUsersToFile(users, filepath);
+    qDebug() << "Updated user " << name;
+
 }
 
 bool Control::login(QString username, QString password) {
