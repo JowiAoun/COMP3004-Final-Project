@@ -15,10 +15,12 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    rawHealthData.cpp \
     user.cpp
 
 HEADERS += \
     mainwindow.h \
+    rawHealthData.h \
     user.h
 
 FORMS += \
