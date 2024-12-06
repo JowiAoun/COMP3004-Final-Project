@@ -5,11 +5,14 @@ static const std::string filepath = "users.txt";
 Control::Control() {}
 
 Control::~Control() {
-    for (Hardware* hardware : connectedHardware) {
-        delete hardware;
+    int hwSize = connectedHardware.getSize();
+    for (int i=0; i<hwSize; i++) {
+        delete connectedHardware[i];
     }
-    for (User* user : currentUser) {
-        delete user;
+
+    int userSize = currentUser.getSize();
+    for (int i=0; i<userSize; i++) {
+        delete currentUser[i];
     }
 }
 
@@ -20,11 +23,13 @@ void Control::addUser(const User& user) {
     qDebug() << "Added user " << user.getName();
 }
 
-void Control::deleteUser(QString name) {
+void Control::deleteUser(QString email) {
     bool userExists = false;
     QVector<User> users = loadUsersFromFile(filepath);
+    QString name = "";
     for (int i=0; i<users.size(); i++) {
-        if (users[i].getName() == name) {
+        if (users[i].getEmail() == email) {
+            name = users[i].getName();
             users.remove(i);
             userExists = true;
             break;
@@ -38,11 +43,13 @@ void Control::deleteUser(QString name) {
 
 }
 
-void Control::updateUser(QString name, const User& user) {
+void Control::updateUser(QString email, const User& user) {
     bool userExists = false;
     QVector<User> users = loadUsersFromFile(filepath);
+    QString name = "";
     for (int i=0; i<users.size(); i++) {
-        if (users[i].getName() == name) {
+        if (users[i].getEmail() == email) {
+            name = users[i].getName();
             users.replace(i, user);
             userExists = true;
             break;
@@ -56,14 +63,14 @@ void Control::updateUser(QString name, const User& user) {
 
 }
 
-bool Control::login(QString username, QString password) {
+bool Control::login(QString email, QString password) {
     bool loggedIn = false;
     QVector<User> users = loadUsersFromFile(filepath);
     for (int i=0; i<users.size(); i++) {
-        if (users[i].getName() == name) {
+        if (users[i].getEmail() == email) {
             currentUser.append(users[i]);
             loggedIn = true;
-            qDebug() << "Logged in as user " << name;
+            qDebug() << "Logged in as user " << users[i].getName();
             break;
         }
     }
