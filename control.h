@@ -4,6 +4,8 @@
 #include "user.h"
 #include "hardware.h"
 #include "healthdata.h"
+#include "rawHealthData.h"
+
 #include "QVector"
 #include "QDebug"
 
@@ -18,14 +20,13 @@ class Control {
         bool login(QString username, QString password);
         bool createAccount(QString username, QString password, QString name, int age, QString gender, float height, float weight);
 
-        //HealthData* processData(SomeRawData);
+        HealthData* processData(const RawHealthData& rawHealthData);
         void displayHistoricalData(const QVector<HealthData>& historicalData);
 
         bool connectToHardware(Hardware* hardware);
         // disconnect?
         bool createNewScan();
         bool createCharts();
-        void listScans(const User& user);
     private:
         QVector<Hardware*> connectedHardware;
         QVector<User*> currentUser;

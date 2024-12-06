@@ -20,7 +20,7 @@ void Control::addUser(const User& user) {
     qDebug() << "Added user " << user.getName();
 }
 
-void Control::deleteUser(const QString& name) {
+void Control::deleteUser(QString name) {
     bool userExists = false;
     QVector<User> users = loadUsersFromFile(filepath);
     for (int i=0; i<users.size(); i++) {
@@ -38,7 +38,7 @@ void Control::deleteUser(const QString& name) {
 
 }
 
-void Control::updateUser(const QString& name, const User& user) {
+void Control::updateUser(QString name, const User& user) {
     bool userExists = false;
     QVector<User> users = loadUsersFromFile(filepath);
     for (int i=0; i<users.size(); i++) {
@@ -79,8 +79,8 @@ bool Control::createAccount(QString username, QString password, QString name, in
     addUser(user);
 }
 
-HealthData* Control::processData(rawdata? ) {
-    // save data to user file?
+HealthData* Control::processData(const RawHealthData& rawHealthData) {
+    // TODO
 }
 
 void Control::displayHistoricalData(const QVector<HealthData>& historicalData) {
@@ -91,23 +91,26 @@ void Control::displayHistoricalData(const QVector<HealthData>& historicalData) {
 }
 
 bool Control::connectToHardware(Hardware* hardware) {
+    if (hardware == NULL) {
+        return false;
+    }
     connectedHardware.append(hardware);
+    return true;
 }
 
 bool Control::createNewScan(const Hardware& hardware) {
     // TODO: class
-    rawData = hardware.takeMeasurements();
+    RawHealthData rawData = hardware.takeMeasurements();
     HealthData* processedData = processData(rawData);
     // TODO: handle currentUser 
     QVector<HealthData*> historicalData = currentUser...
     createCharts(historicalData);
     displayHistoricalData();
+    // TODO
 }
 
 
-bool Control::createCharts() {}
+bool Control::createCharts() {
 
-
-void Control::listScans(const User& user) {
-    // displayHistoricalData(); ??
 }
+
