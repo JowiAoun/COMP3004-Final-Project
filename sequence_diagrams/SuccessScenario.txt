@@ -1,0 +1,27 @@
+title RaDoTech user sees the trend analysis of their health data
+
+participant "person" as Person
+
+participantgroup device
+participant "view:View\n<<ui>>" as View
+participant "hardware:Hardware\n<<ui>>" as Hardware
+
+end
+
+participant "control:Control\n<<controller>>" as Control
+
+participant "user:User\n<<actor>>" as User
+
+participant "healthData:HealthData\n<<actor>>" as HealthData
+
+Person->View: connectButton()
+activate Person
+View->Control: connectToHardware()
+Control->Hardware: Hardware()
+Person->View: trendAnalysisButton()
+View->Control: trend analysis request
+Control->User: displayHistoricalData()
+User->HealthData: HistoricalHealthData()
+HealthData->View: displayData()
+Person->Hardware: shutdown()
+deactivate Person
