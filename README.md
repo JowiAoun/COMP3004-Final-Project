@@ -13,13 +13,13 @@ Jowi Aoun
 Daniel Chen
   - UML class diagram
   - Sequence diagrams
-  - Use case(s): 
+  - Use case(s): 1, 3, 4, 5, 7
   - User class
 
 Yun Nam
   - UML class diagram
   - Sequence diagrams
-  - Use case(s): 9, 10
+  - Use case(s): 2, 9, 10
   - Controller Class
 
 Amr Moustafa
