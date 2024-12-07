@@ -2,55 +2,67 @@
 
 static const std::string filepath = "users.txt";
 
-Control::Control() {}
+Control::Control(): currentUser(NULL), connectedHardware(NULL) {
+    allUsers = loadUsersFromFile(filepath);
+
+}
 
 Control::~Control() {
-    int hwSize = connectedHardware.getSize();
-    for (int i=0; i<hwSize; i++) {
-        delete connectedHardware[i];
-    }
 
-    int userSize = currentUser.getSize();
+    int userSize = allUsers.size();
     for (int i=0; i<userSize; i++) {
-        delete currentUser[i];
+        delete allUsers[i];
     }
+    if (connectedHardware != NULL) {
+        delete connectedHardware;
+    }
+    currentUser = NULL;
 }
 
 void Control::addUser(const User& user) {
-    QVector<User> users = loadUsersFromFile(filepath);
-    users.append(user);
-    saveUsersToFile(users, filepath);
+    allUsers.append(new User(user.getEmail(), user.getPassword(), user.getName(), user.getGender(), user.getAge(), user.getWeight(), user.getHeight()));
+    saveUsersToFile(allUsers, filepath);
     qDebug() << "Added user " << user.getName();
 }
 
 void Control::deleteUser(QString email) {
     bool userExists = false;
-    QVector<User> users = loadUsersFromFile(filepath);
     QString name = "";
-    for (int i=0; i<users.size(); i++) {
-        if (users[i].getEmail() == email) {
-            name = users[i].getName();
-            users.remove(i);
+    for (int i=0; i<allUsers.size(); i++) {
+        if (allUsers[i]->getEmail() == email) {
+            if (allUsers[i]->getEmail() == currentUser.getEmail()) {
+                currentUser = NULL;
+                qDebug() << "Current user account deleted. Log in again";
+            }
+
+            name = allUsers[i]->getName();
+            allUsers.remove(i);
             userExists = true;
+            
             break;
         }
     }
     if (userExists == false) {
         throw std::runtime_error("User does not exist");
     }
-    saveUsersToFile(users, filepath);
+    saveUsersToFile(allUsers, filepath);
     qDebug() << "Deleted user " << name;
 
 }
 
 void Control::updateUser(QString email, const User& user) {
     bool userExists = false;
-    QVector<User> users = loadUsersFromFile(filepath);
     QString name = "";
-    for (int i=0; i<users.size(); i++) {
-        if (users[i].getEmail() == email) {
-            name = users[i].getName();
-            users.replace(i, user);
+    for (int i=0; i<allUsers.size(); i++) {
+        if (allUsers[i]->getEmail() == email) {
+            name = allUsers[i]->getName();
+            allUsers[i]->setEmail(user.getEmail());
+            allUsers[i]->setPassword(user.getPassword());
+            allUsers[i]->setName(user.getName());
+            allUsers[i]->setGender(user.getGender());
+            allUsers[i]->setAge(user.getAge());
+            allUsers[i]->setWeight(user.getWeight());
+            allUsers[i]->setHeight(user.getHeight());
             userExists = true;
             break;
         }
@@ -58,32 +70,42 @@ void Control::updateUser(QString email, const User& user) {
     if (userExists == false) {
         throw std::runtime_error("User does not exist");
     }
-    saveUsersToFile(users, filepath);
+    saveUsersToFile(allUsers, filepath);
     qDebug() << "Updated user " << name;
 
 }
 
-bool Control::login(QString email, QString password) {
+bool Control::login(QString email) {
     bool loggedIn = false;
-    QVector<User> users = loadUsersFromFile(filepath);
-    for (int i=0; i<users.size(); i++) {
-        if (users[i].getEmail() == email) {
-            currentUser.append(users[i]);
+    for (int i=0; i<allUsers.size(); i++) {
+        if (allUsers[i]->getEmail() == email) {
+            currentUser = allUsers[i];
             loggedIn = true;
-            qDebug() << "Logged in as user " << users[i].getName();
+            qDebug() << "Logged in as user " << allUsers[i].getName();
             break;
         }
     }
     if (loggedIn == false) {
-        throw std::runtime_error("Wrong credentials");
+        throw std::runtime_error("Authentication error");
     }
-
+    return true;
 }
 
-bool Control::createAccount(QString username, QString password, QString name, int age, QString gender, float height, float weight) {
-    // TODO: need username and password variables in User
-    User newUser = new User(username, password, name, gender, age, weight, height);
-    addUser(user);
+bool Control::createAccount(QString email, QString password, QString name, int age, QString gender, float height, float weight) {
+    bool userExists = false;
+    // if user already exists
+    for (int i=0; i<allUsers.size(); i++) {
+        if (allUsers[i]->getEmail() == email) {
+            qDebug() << "User already exists: " << allUsers[i].getEmail();
+            userExists = true;
+            return false;
+        }
+    }
+    // otherwise add new user
+    if (userExists == false) {
+        addUser(new User(email, password, name, gender, age, weight, height));
+    }
+    return true;
 }
 
 HealthData* Control::processData(const RawHealthData& rawHealthData) {
@@ -101,8 +123,15 @@ bool Control::connectToHardware(Hardware* hardware) {
     if (hardware == NULL) {
         return false;
     }
-    connectedHardware.append(hardware);
+    if (connectedHardware != NULL) {
+        delete connectedHardware;
+    }
+    connectedHardware = hardware;
     return true;
+}
+
+bool Control::disconnectFromHardware(Hardware* hardware) {
+    // for graceful shutdown??
 }
 
 bool Control::createNewScan(const Hardware& hardware) {
@@ -110,7 +139,7 @@ bool Control::createNewScan(const Hardware& hardware) {
     RawHealthData rawData = hardware.takeMeasurements();
     HealthData* processedData = processData(rawData);
     // TODO: handle currentUser 
-    QVector<HealthData*> historicalData = currentUser...
+    // QVector<HealthData*> historicalData = currentUser...
     createCharts(historicalData);
     displayHistoricalData();
     // TODO
@@ -118,6 +147,7 @@ bool Control::createNewScan(const Hardware& hardware) {
 
 
 bool Control::createCharts() {
+    // TODO
 
 }
 
