@@ -1,0 +1,31 @@
+title Safety Scenario: RadoTech user wants to get measurements taken but the battery is low and eventually dies down
+
+participant "person" as Person
+
+participantgroup device
+participant "view:View\n<<ui>>" as View
+participant "hardware:Hardware\n<<ui>>" as Hardware
+
+end
+
+participant "control:Control\n<<controller>>" as Control
+
+participant "user:User\n<<actor>>" as User
+
+participant "healthData:HealthData\n<<actor>>" as HealthData
+
+Person->View: connectButton()
+activate Person
+View->Control: connectToHardware()
+Control->Hardware: Hardware()
+Hardware->Control: isLowPower()
+Hardware->View: isLowPower()
+
+Person->View: measurementsButton()
+View->Hardware: measurement
+Hardware->Control: takeMeasurements()
+Hardware->Control: isCriticalPower()
+Hardware->View: isCriticalPower()
+Hardware->Control: gracefulShutdown()
+Control->Hardware: disconnectFromHardware()
+deactivate Person
