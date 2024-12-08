@@ -14,10 +14,20 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    MainWindow.cpp
+    MainWindow.cpp \
+    control.cpp \
+    hardware.cpp \
+    healthData.cpp \
+    rawHealthData.cpp \
+    user.cpp
 
 HEADERS += \
-    MainWindow.h
+    MainWindow.h \
+    control.h \
+    hardware.h \
+    healthData.h \
+    rawHealthData.h \
+    user.h
 
 FORMS += \
     MainWindow.ui

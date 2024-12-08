@@ -1,16 +1,20 @@
 #ifndef HARDWARE_H
-#define HARDAWRE_H
+#define HARDWARE_H
 
 #include <QVector>
+
+#include "healthData.h"
 
 class Hardware {
 
 	public:
-		Hardware::Hardware(int hardwareid);
+        Hardware(int hardwareid);
 
 		int battery = 0;
 		int hardwareid = 1;
 		bool powerConnected = false;
+
+        HealthData* takeMeasurements() const;
 
 		bool isLowPower();
 		bool isCriticalPower();
@@ -18,7 +22,7 @@ class Hardware {
 		bool connectionLoss();
 
 		QVector<int> rawdata; // a series of number values for each Hn from H1 to H6 then F1 to F6
-}
+};
 
 
 #endif

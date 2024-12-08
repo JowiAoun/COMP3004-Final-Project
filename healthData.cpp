@@ -3,6 +3,15 @@
 #include <QString>
 #include <QDateTime>
 
+HealthData::HealthData():
+    energyLevel(0),
+    immuneSystem(0),
+    metabolism(0),
+    psychoEmotionalState(0),
+    musculoskeletalSystem(0),
+    createdOn(std::time(nullptr))  {
+}
+
 HealthData::HealthData(float energyLevel, float immuneSystem, float metabolism, 
                        float psychoEmotionalState, float musculoskeletalSystem)
     : energyLevel(energyLevel),
@@ -48,3 +57,17 @@ QString HealthData::displayData() const {
         .arg(getAverage())
         .arg(formattedDate);
 }
+
+template<class Archive>
+void HealthData::serialize(Archive& ar, const unsigned int version) {
+    ar & energyLevel;
+    ar & immuneSystem;
+    ar & metabolism;
+    ar & psychoEmotionalState;
+    ar & musculoskeletalSystem;
+    ar & createdOn;
+}
+
+template void HealthData::serialize<boost::archive::text_oarchive>(boost::archive::text_oarchive& ar, const unsigned int version);
+template void HealthData::serialize<boost::archive::text_iarchive>(boost::archive::text_iarchive& ar, const unsigned int version);
+

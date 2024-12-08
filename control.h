@@ -3,8 +3,10 @@
 
 #include "user.h"
 #include "hardware.h"
-#include "healthdata.h"
+#include "healthData.h"
 #include "rawHealthData.h"
+
+#include <string>
 
 #include "QVector"
 #include "QDebug"
@@ -14,7 +16,7 @@ class Control {
         Control();
         ~Control();
 
-        void addUser(const User& user);
+        void addUser(User user);
         void deleteUser(QString email);
         void updateUser(QString email, const User& user);
         // bool login(QString email, QString password);
@@ -25,16 +27,16 @@ class Control {
         void displayHistoricalData(const QVector<HealthData>& historicalData);
 
         bool connectToHardware(Hardware* hardware);
-        // bool disconnectFromHardware(Hardware* hardware);
+        bool disconnectFromHardware(Hardware* hardware);
 
-        bool createNewScan();
+        bool createNewScan(const Hardware&);
         bool createCharts();
     private:
         Hardware* connectedHardware;
-        QVector<User*> allUsers;
+        QVector<User> allUsers;
         User* currentUser;
 
-}
+};
 
 #endif
 
