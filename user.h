@@ -11,41 +11,44 @@
 #include <fstream>
 #include <stdexcept>
 
+#include "healthData.h"
+
 class User {
   public:
     User();
-    User(QString email, QString password, QString name, QString gender, int age, float weight, float height);
+    User(QString email, QString name, QString gender, int age, float weight, float height);
+    User(QString email, QString name, QString gender, int age, float weight, float height, QVector<HealthData>);
     ~User();
 
+    QString getEmail() const;
+    void setEmail(QString email);
+
     QString getName() const;
-    QString setName(QString name);
+    void setName(QString name);
 
     QString getGender() const;
-    QString setGender(QString gender);
+    void setGender(QString gender);
 
     int getAge() const;
-    int setAge(int age);
+    void setAge(int age);
 
     float getWeight() const;
-    float setWeight(float weight);
+    void setWeight(float weight);
 
     float getHeight() const;
-    float setHeight(float height);
-    
-    QString getEmail() const;
-    QString setEmail(QString email);
+    void setHeight(float height);
 
-    QString getPassword() const;
-    QString setPassword(QString password);
+    QVector<HealthData> getHistoricalHealthData();
+    void setHistoricalHealthData(QVector<HealthData> historicalHealthData);
 
   private:
+    QString email;
     QString name;
     QString gender;
     int     age;
     float   weight;
     float   height;
-    QString email;
-    QString password;
+    QVector<HealthData> historicalHealthData;
 
     // Allow serialization access to private members
     friend class boost::serialization::access;

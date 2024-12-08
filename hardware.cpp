@@ -1,15 +1,17 @@
 #include "hardware.h"
 
-Hardware::Hardware(int hardwareid): hardwareid(hardwareid) {};
+Hardware::Hardware(int hardwareid): hardwareid(hardwareid) {
+
+}
 
 
-HealthData* Hardware::takeMeasurements() {
+HealthData* Hardware::takeMeasurements() const{
 	// im gonna simulate fake data being inputted since im not sure how were
 	// gonna get actual measurements from the device
 	
-	QVector 
+    //QVector;
 
-	HealthData cleandata = new HealthData();
+    //HealthData cleandata = new HealthData();
 }
 
 
@@ -26,7 +28,7 @@ bool Hardware::gracefulShutdown() {
 	return true;
 }
 
-bool connectionLoss() {
+bool Hardware::connectionLoss() {
 	return this->powerConnected;
 }
 
