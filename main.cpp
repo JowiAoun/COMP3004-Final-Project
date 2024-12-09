@@ -1,12 +1,17 @@
 #include "MainWindow.h"
 #include "user.h"
+#include "control.h"
+#include "rawHealthData.h"
+#include "healthData.h"
 
 #include <QApplication>
 #include <QDebug>
+#include <QRandomGenerator>
 
 int main(int argc, char *argv[])
 {
     QVector<User> users;
+    Control control;
 
     // Add users to the QVector
     users.append(User("jane.doe@example.com", "Jane Doe", "Female", 28, 65.0, 170.0));
@@ -55,7 +60,40 @@ int main(int argc, char *argv[])
             }
         }
 
-        return 0;
+    /* Scan */
+
+    // TODO: select user profile
+
+    // Raw health data
+    int measurements[24][10];
+    int lowerBound = 5;
+    int upperBounds[24] = { 191, 191, 171, 171, 151, 151, 171, 171, 201, 201, 201, 201, 161, 161, 131, 131, 151, 151, 151,151,  131, 131, 151, 151};
+    QString skinContactPoints[24] = { "H1-L", "H1-R", "H2-L", "H2-R", "H3-L", "H3-R", "H4-L", "H4-R", "H5-L", "H5-R", "H6-L", "H6-R", 
+                                      "F1-L", "F1-R", "F2-L", "F2-R", "F3-L", "F3-R", "F4-L", "F4-R", "F5-L", "F5-R", "F6-L", "F6-R"};
+    // Measure 24 points of skin contact
+    for (int i=0; i< 24; ++i) {
+        // each point gets 10 numbers
+        for (int j=0; j< 10; ++j) {
+            measurements[i][j] = QRandomGenerator::global()->bounded(lowerBound, upperBounds[i]);
+    }
+    RawHealthData rawHealthData(measurements);
+    
+    // print rawHealthData measurements
+    for (int i=0; i< 24; ++i) {
+        QDebug debug = qDebug();
+        debug << skinContactPoints[i] << ":"; 
+        for (int j=0; j< 10; ++j) {
+            debug << measurements[i][j];
+        }
+    }
+
+    // TODO: data processing
+    HealthData* healthData = control.processData(rawHealthData);
+    QDebug() << "Display processed Data:" << healthData->displayData();
+    delete healthData;
+    
+ 
+    return 0;
     /*
     QApplication a(argc, argv);
     MainWindow w;

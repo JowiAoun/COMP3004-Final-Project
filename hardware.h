@@ -21,6 +21,8 @@ class Hardware {
 		bool gracefulShutdown();
 		bool connectionLoss();
 
+		int getBattery() const;
+
 		QVector<int> rawdata; // a series of number values for each Hn from H1 to H6 then F1 to F6
 };
 
