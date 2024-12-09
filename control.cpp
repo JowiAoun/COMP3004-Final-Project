@@ -5,7 +5,6 @@ namespace{
 }
 Control::Control(): currentUser(NULL), connectedHardware(NULL) {
     allUsers = loadUsersFromFile(filepath);
-
 }
 
 Control::~Control() {
@@ -174,7 +173,7 @@ bool Control::connectToHardware(Hardware* hardware) {
     return true;
 }
 
-bool Control::disconnectFromHardware(Hardware* hardware) {
+bool Control::disconnectFromHardware() {
     // TODO: for graceful shutdown??
 }
 
@@ -196,32 +195,59 @@ int Control::getBatteryStatus() const {
     return 2;
 }
 
-bool Control::createNewScan(const Hardware& hardware) {
     // TODO:
     // 1. get info from hardware
-    // 2. select profile
+    // 2. select profile (must happen prior to this method)
     // 3. measure each skin point
     // 4. processData
     // 5. save to user
     // 6. display?
 
-    if (getBatteryStatus(hardware) == 0) {
-        hardware->gracefulShutdown();
-        return false;
+RawHealthData* Control::startNewScan() const {
+    if (connectedHardware == NULL) {
+        throw std::runtime_error("No connected Hardware");
     }
-    // email parameter?
-    // login(email);
-    // RawHealthData rawData = hardware.takeMeasurements();
-    // HealthData* processedData = processData(rawData);
-    // saveHealthData(processedData);
-    // QVector<HealthData*> historicalData = currentUser...
-    //createCharts(historicalData);
-    //displayHistoricalData();
+
+    if (getBatteryStatus() == 0) {
+        connectedHardware->gracefulShutdown();
+        return NULL;
+    }
+    if (currentUser == NULL) {
+        throw std::runtime_error("User not selected");
+    }
+    else {
+        RawHealthData* rawHealthData = connectedHardware->takeMeasurements();
+        // TODO: lower battery 
+        return rawHealthData;
+    }
+    return;
 }
+
+bool Control::receiveNewScan(const RawHealthData& rawData) const {
+    if (currentUser == NULL) {
+        throw std::runtime_error("User not selected");
+    }
+    HealthData* processedData = processData(rawData);
+    if (processedData == NULL) {
+        throw std::runtime_error("Data Processing error");
+    }
+    if (saveHealthData(*processedData)) {
+        QVector<HealthData> historicalData = currentUser->getHistoricalHealthData();
+        displayHistoricalData(historicalData);
+        // TODO:
+        createCharts();
+        delete processedData;
+        return true;
+    }
+    delete processedData;
+    return false;
+}
+ 
 
 
 bool Control::createCharts() {
     // TODO
+
 
 }
 
