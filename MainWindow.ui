@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -178,8 +178,8 @@
      <widget class="QWidget" name="formLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>40</y>
+        <x>50</x>
+        <y>60</y>
         <width>511</width>
         <height>542</height>
        </rect>
@@ -200,6 +200,9 @@
        <property name="formAlignment">
         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
        </property>
+       <property name="horizontalSpacing">
+        <number>40</number>
+       </property>
        <property name="verticalSpacing">
         <number>20</number>
        </property>
@@ -210,13 +213,20 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_2">
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>Gender</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEdit_8">
          <property name="text">
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Lastname</string>
+          <string>Your gender</string>
          </property>
         </widget>
        </item>
@@ -290,20 +300,13 @@
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_7">
-         <property name="text">
-          <string>Gender</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_8">
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="lineEdit_2">
          <property name="text">
           <string/>
          </property>
          <property name="placeholderText">
-          <string>Your gender</string>
+          <string>Lastname</string>
          </property>
         </widget>
        </item>
@@ -313,13 +316,49 @@
       <property name="geometry">
        <rect>
         <x>190</x>
-        <y>600</y>
+        <y>610</y>
         <width>211</width>
         <height>81</height>
        </rect>
       </property>
       <property name="text">
        <string>Save and continue</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_18">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>80</y>
+        <width>91</width>
+        <height>95</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>:/images/profilePicture.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_20">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>30</y>
+        <width>143</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Create profile</string>
       </property>
      </widget>
     </widget>
@@ -443,14 +482,30 @@
      <widget class="QPushButton" name="btnConnect_2">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>460</y>
+        <x>190</x>
+        <y>570</y>
         <width>211</width>
         <height>81</height>
        </rect>
       </property>
       <property name="text">
        <string>Next</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_16">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>100</y>
+        <width>463</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>:/images/instruction1.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -478,14 +533,30 @@
      <widget class="QPushButton" name="btnConnect_3">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>460</y>
+        <x>190</x>
+        <y>570</y>
         <width>211</width>
         <height>81</height>
        </rect>
       </property>
       <property name="text">
        <string>Close</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_17">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>100</y>
+        <width>481</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>:/images/instruction2.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -496,8 +567,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>540</y>
+        <x>190</x>
+        <y>530</y>
         <width>203</width>
         <height>17</height>
        </rect>
@@ -512,8 +583,8 @@
      <widget class="QPushButton" name="btnMetering">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>590</y>
+        <x>190</x>
+        <y>570</y>
         <width>211</width>
         <height>81</height>
        </rect>
@@ -740,12 +811,22 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>80</width>
-      <height>25</height>
+      <width>31</width>
+      <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>16</pointsize>
+      <weight>50</weight>
+      <italic>false</italic>
+      <bold>false</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+     </font>
+    </property>
     <property name="text">
-     <string>&lt;    Back</string>
+     <string>☰</string>
     </property>
    </widget>
   </widget>
