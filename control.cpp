@@ -14,14 +14,15 @@ Control::Control(): currentUser(NULL), connectedHardware(NULL) {
 }
 
 Control::~Control() {
-  int userSize = allUsers.size();
-  for (int i = 0; i < userSize; i++) {
-    // delete allUsers[i];
-  }
-  if (connectedHardware != NULL) {
-    delete connectedHardware;
-  }
-  currentUser = NULL;
+
+    int userSize = allUsers.size();
+    for (int i=0; i<userSize; ++i) {
+        //delete allUsers[i];
+    }
+    if (connectedHardware != NULL) {
+        delete connectedHardware;
+    }
+    currentUser = NULL;
 }
 
 User* Control::getCurrentUser() {
@@ -67,10 +68,10 @@ User Control::getUserByEmail(QString email) {
 }
 
 void Control::addUser(User user) {
-  if (doesUserExist(user.getEmail())) {
-    qDebug() << "User with email " << user.getEmail()
-             << " already exists, skipping addUser call." return;
-  }
+    allUsers.append(User(user.getEmail(), user.getName(), user.getGender(), user.getAge(), user.getWeight(), user.getHeight()));
+    saveUsersToFile(allUsers, filepath);
+    qDebug() << "Added user " << user.getName();
+}
 
 void Control::deleteUser(QString email) {
     bool userExists = false;
@@ -95,8 +96,6 @@ void Control::deleteUser(QString email) {
     saveUsersToFile(allUsers, filepath);
     qDebug() << "Deleted user " << name;
 
-  saveUsersToFile(allUsers, filepath);
-  qDebug() << "Added user " << user.getName();
 }
 
 void Control::updateUser(QString email, const User& user) {
@@ -120,53 +119,7 @@ void Control::updateUser(QString email, const User& user) {
     }
     saveUsersToFile(allUsers, filepath);
     qDebug() << "Updated user " << name;
-}
 
-bool Control::saveUser(QString email, const User& user) {
-  if (!doesUserExist(email)) {
-    qDebug() << "User with email " << email << " does not exist, skipping deleteUser call."
-             << "Throwing runtime error...";
-
-    throw std::runtime_error("User does not exist");
-
-    return;
-  }
-
-  name = user.getName();
-  user.setEmail(user.getEmail());
-  user.setName(user.getName());
-  user.setGender(user.getGender());
-  user.setAge(user.getAge());
-  user.setWeight(user.getWeight());
-  user.setHeight(user.getHeight());
-
-  saveUsersToFile(allUsers, filepath);
-  qDebug() << "Updated user " << name;
-}
-
-void Control::deleteUser(QString email) {
-  if (!doesUserExist(email)) {
-    qDebug() << "User with email " << email << " does not exist, skipping deleteUser call."
-             << "Throwing runtime error...";
-
-    throw std::runtime_error("User does not exist");
-
-    return;
-  }
-
-  if (email == currentUser->getEmail()) {
-    currentUser = NULL;
-    qDebug() << "Current user account deleted. Log in again";
-  }
-
-  User user = Control::getUserByEmail(email);
-  int userIndex = Control::getUserIndex(email);
-
-  name = user.getName();
-  allUsers.remove(userIndex);
-
-  saveUsersToFile(allUsers, filepath);
-  qDebug() << "Deleted user " << name;
 }
 
 bool Control::login(QString email) {
@@ -179,11 +132,10 @@ bool Control::login(QString email) {
             break;
         }
     }
-  }
-  if (loggedIn == false) {
-    throw std::runtime_error("Authentication error");
-  }
-  return true;
+    if (loggedIn == false) {
+        throw std::runtime_error("Authentication error");
+    }
+    return true;
 }
 
 bool Control::createAccount(QString email, QString password, QString name, QString age, QString gender, QString height, QString weight) {
@@ -196,12 +148,11 @@ bool Control::createAccount(QString email, QString password, QString name, QStri
             return false;
         }
     }
-  }
-  // otherwise add new user
-  if (userExists == false) {
-    addUser(User(email, name, gender, age, weight, height));
-  }
-  return true;
+    // otherwise add new user
+    if (userExists == false) {
+        addUser(User(email, name, gender, age, weight, height));
+    }
+    return true;
 }
 
 HealthData* Control::processData(RawHealthData& rawHealthData) {
@@ -271,7 +222,11 @@ bool Control::connectToHardware(Hardware* hardware) {
 }
 
 bool Control::disconnectFromHardware() {
-    // TODO: for graceful shutdown??
+    if (connectedHardware != NULL) {
+      delete connectedHardware;
+      connectedHardware = NULL;
+    }
+    return true;
 }
 
 int Control::getBatteryStatus() const {
@@ -314,7 +269,6 @@ RawHealthData* Control::startNewScan() const {
     }
     else {
         RawHealthData* rawHealthData = connectedHardware->takeMeasurements();
-        // TODO: lower battery 
         return rawHealthData;
     }
     return NULL;
@@ -357,3 +311,4 @@ void Control::setCurrentUser(User* user) {
 void Control::saveUsers() {
     saveUsersToFile(allUsers, filepath);
 }
+

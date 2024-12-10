@@ -22,6 +22,8 @@ class Hardware {
   bool gracefulShutdown(Control controlInstance);
   bool connectionLoss();
   const bool setBatteryPower(int power);
+  int getBattery() const;
+
 
 
 		int getBattery() const;

@@ -1,55 +1,60 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
-#include <string>
-
-#include "QDebug"
-#include "QVector"
+#include "user.h"
 #include "hardware.h"
 #include "healthData.h"
 #include "rawHealthData.h"
-#include "user.h"
+
+#include <string>
+
+#include "QVector"
+#include "QDebug"
 
 class Control {
- public:
-  Control();
-  ~Control();
+    public:
+        Control();
+        ~Control();
 
-  // Getters
-  User* getCurrentUser();
-  User getUserByEmail(QString email);
+        // Getters
+        User* getCurrentUser();
+        User getUserByEmail(QString email);
 
-  // Validity Checkers
-  int getUserIndex(QString email);
-  bool doesUserExist(QString email);
+        // Validity Checkers
+        int getUserIndex(QString email);
+        bool doesUserExist(QString email);
 
-  // CRUD Methods
-  void addUser(User user);
-  void deleteUser(QString email);
-  void updateUser(QString email, const User& user);
-  void saveUser(QString email, const User& user);
-  // bool login(QString email, QString password);
+        //CRUD
+        void addUser(User user);
+        void deleteUser(QString email);
+        void updateUser(QString email, const User& user);
+        void saveUser(QString email, const User& user);
+        // Authentication
+        bool login(QString email);
+        bool createAccount(QString email, QString password, QString name, QString age, QString gender, QString height, QString weight);
 
-  // Authentication Methods
-  bool login(QString email);
-  bool createAccount(QString email, QString password, QString name, int age, QString gender,
-                     float height, float weight);
+        // Data processing
+        HealthData* processData(RawHealthData& rawHealthData);
+        bool saveHealthData(const HealthData& healthData);
+        void displayHistoricalData(const QVector<HealthData>& historicalData);
 
-  // Data Processing Methods
-  HealthData* processData(const RawHealthData& rawHealthData);
-  void displayHistoricalData(const QVector<HealthData>& historicalData);
+        // Hardware
+        bool connectToHardware(Hardware* hardware);
+        bool disconnectFromHardware();
+        int getBatteryStatus() const;
 
-  // Hardware Methods
-  bool connectToHardware(Hardware* hardware);
-  bool disconnectFromHardware(Hardware* hardware);
+        RawHealthData* startNewScan() const;
+        bool receiveNewScan(RawHealthData& rawData);
+        bool createCharts();
 
-  bool createNewScan(const Hardware&);
-  bool createCharts();
+        void setCurrentUser(User* user);
 
- private:
-  Hardware* connectedHardware;
-  QVector<User> allUsers;
-  User* currentUser;
+        void saveUsers();
+        User* currentUser;
+        QVector<User> allUsers;
+    private:
+        Hardware* connectedHardware;
+
 };
 
 #endif
