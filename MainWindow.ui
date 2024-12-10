@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="QLabel" name="title">
@@ -129,7 +129,11 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_3"/>
+        <widget class="QLineEdit" name="lineEdit_3">
+         <property name="placeholderText">
+          <string>Your weight</string>
+         </property>
+        </widget>
        </item>
        <item row="4" column="0">
         <widget class="QLabel" name="label_2">
@@ -139,17 +143,25 @@
         </widget>
        </item>
        <item row="4" column="1">
-        <widget class="QLineEdit" name="lineEdit_4"/>
+        <widget class="QLineEdit" name="lineEdit_4">
+         <property name="placeholderText">
+          <string>Your height</string>
+         </property>
+        </widget>
        </item>
        <item row="5" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Date of birth</string>
+          <string>Age</string>
          </property>
         </widget>
        </item>
        <item row="5" column="1">
-        <widget class="QLineEdit" name="lineEdit_5"/>
+        <widget class="QLineEdit" name="lineEdit_5">
+         <property name="placeholderText">
+          <string>Your age</string>
+         </property>
+        </widget>
        </item>
        <item row="6" column="0">
         <widget class="QLabel" name="label_4">
@@ -159,7 +171,11 @@
         </widget>
        </item>
        <item row="6" column="1">
-        <widget class="QLineEdit" name="lineEdit_6"/>
+        <widget class="QLineEdit" name="lineEdit_6">
+         <property name="placeholderText">
+          <string>Canada</string>
+         </property>
+        </widget>
        </item>
        <item row="7" column="0">
         <widget class="QLabel" name="label_5">
@@ -169,57 +185,81 @@
         </widget>
        </item>
        <item row="7" column="1">
-        <widget class="QLineEdit" name="lineEdit_7"/>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Email</string>
+        <widget class="QLineEdit" name="lineEdit_7">
+         <property name="placeholderText">
+          <string>6131111111</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="1">
-        <widget class="QLineEdit" name="lineEdit_8"/>
-       </item>
-       <item row="9" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Password</string>
+          <string>Gender</string>
          </property>
         </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QLineEdit" name="lineEdit_9"/>
-       </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Confirm password</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QLineEdit" name="lineEdit_10"/>
        </item>
        <item row="2" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QRadioButton" name="radioButton_2">
-           <property name="text">
-            <string>Male</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton">
-           <property name="text">
-            <string>Female</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
+        <widget class="QLineEdit" name="lineEdit_8">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Your gender</string>
+         </property>
+        </widget>
        </item>
       </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page3">
+     <widget class="QLabel" name="labelName">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>10</y>
+        <width>151</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QChartView" name="graphicsView">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>551</width>
+        <height>401</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_4">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>500</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Detail</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_5">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>600</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Measure now</string>
+      </property>
      </widget>
     </widget>
    </widget>
@@ -265,6 +305,13 @@
    </property>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QChartView</class>
+   <extends>QGraphicsView</extends>
+   <header location="global">QtCharts/QChartView</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
