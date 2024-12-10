@@ -114,10 +114,10 @@ bool Control::createAccount(QString email, QString password, QString name, int a
     return true;
 }
 
-HealthData* Control::processData(const RawHealthData& rawHealthData) {
-    if (rawHealthData == NULL) {
+HealthData* Control::processData(RawHealthData& rawHealthData) {
+    /*if (rawHealthData == NULL) {
         throw std::runtime_error("RawHealthData data validation failed");
-    } 
+    }*/
     //get only the last measurement from each 24 skin contact points
     int measurements24[SKIN_CONTACT_POINTS];
     for (int i=0; i<SKIN_CONTACT_POINTS; ++i) {
@@ -189,15 +189,15 @@ int Control::getBatteryStatus() const {
         throw std::runtime_error("No connected Hardware");
     }
     if (connectedHardware->isCriticalPower()) {
-        QDebug() << "Critical Power:" << connectedHardware->getBattery();
-        QDebug() << "Shutting down..." ;
+        qDebug() << "Critical Power:" << connectedHardware->getBattery();
+        qDebug() << "Shutting down..." ;
         return C_CRITICAL_BATTERY;
     }
     if (connectedHardware->isLowPower()) {
-        QDebug() << "Low Power warning:" << connectedHardware->getBattery();
+        qDebug() << "Low Power warning:" << connectedHardware->getBattery();
         return C_LOW_POWER_BATTERY;
     }
-    QDebug() << "Healthy Battery:" << connectedHardware->getBattery();
+    qDebug() << "Healthy Battery:" << connectedHardware->getBattery();
     // TODO: send info to ui?
     return C_HEALTHY_BATTERY;
 }
@@ -227,10 +227,10 @@ RawHealthData* Control::startNewScan() const {
         // TODO: lower battery 
         return rawHealthData;
     }
-    return;
+    return NULL;
 }
 
-bool Control::receiveNewScan(const RawHealthData& rawData) const {
+bool Control::receiveNewScan(RawHealthData& rawData) {
     if (currentUser == NULL) {
         throw std::runtime_error("User not selected");
     }

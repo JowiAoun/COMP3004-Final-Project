@@ -22,7 +22,7 @@ class Control {
         bool login(QString email);
         bool createAccount(QString email, QString password, QString name, int age, QString gender, float height, float weight);
 
-        HealthData* processData(const RawHealthData& rawHealthData);
+        HealthData* processData(RawHealthData& rawHealthData);
         bool saveHealthData(const HealthData& healthData);
         void displayHistoricalData(const QVector<HealthData>& historicalData);
 
@@ -30,8 +30,8 @@ class Control {
         bool disconnectFromHardware();
         int getBatteryStatus() const;
 
-        RawHealthData* startNewScan();
-        bool receiveNewScan(const RawHealthData& rawData) const;
+        RawHealthData* startNewScan() const;
+        bool receiveNewScan(RawHealthData& rawData);
         bool createCharts();
     private:
         Hardware* connectedHardware;
