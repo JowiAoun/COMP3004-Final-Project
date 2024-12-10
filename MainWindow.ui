@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>8</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -767,16 +767,6 @@ QPushButton:hover {
        <string/>
       </property>
      </widget>
-     <widget class="QChartView" name="graphMetrics">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>80</y>
-        <width>551</width>
-        <height>401</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QPushButton" name="btnDetail">
       <property name="geometry">
        <rect>
@@ -1020,16 +1010,6 @@ QPushButton:hover {
       </property>
       <property name="text">
        <string>Start metering</string>
-      </property>
-     </widget>
-     <widget class="QChartView" name="graphMetering">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>290</y>
-        <width>551</width>
-        <height>221</height>
-       </rect>
       </property>
      </widget>
      <widget class="QLabel" name="imageBodyPoint">
@@ -1342,13 +1322,6 @@ QPushButton:hover {
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QChartView</class>
-   <extends>QGraphicsView</extends>
-   <header location="global">QtCharts/QChartView</header>
-  </customwidget>
- </customwidgets>
  <resources>
   <include location="assets/resources.qrc"/>
  </resources>
