@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -338,7 +338,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/images/profilePicture.png</pixmap>
+       <pixmap resource="assets/resources.qrc">:/images/profilePicture.png</pixmap>
       </property>
      </widget>
      <widget class="QLabel" name="label_20">
@@ -505,7 +505,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/images/instruction1.png</pixmap>
+       <pixmap resource="assets/resources.qrc">:/images/instruction1.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -556,7 +556,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/images/instruction2.png</pixmap>
+       <pixmap resource="assets/resources.qrc">:/images/instruction2.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -597,7 +597,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>280</y>
+        <y>290</y>
         <width>551</width>
         <height>221</height>
        </rect>
@@ -608,9 +608,15 @@
        <rect>
         <x>170</x>
         <y>20</y>
-        <width>250</width>
+        <width>259</width>
         <height>250</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>250</width>
+        <height>250</height>
+       </size>
       </property>
       <property name="maximumSize">
        <size>
@@ -620,6 +626,9 @@
       </property>
       <property name="text">
        <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="assets/resources.qrc">:/images/point1.png</pixmap>
       </property>
      </widget>
     </widget>
@@ -893,6 +902,8 @@
    <header location="global">QtCharts/QChartView</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="assets/resources.qrc"/>
+ </resources>
  <connections/>
 </ui>
