@@ -26,6 +26,31 @@ MainWindow::MainWindow(QWidget *parent)
     this->control = new Control();
 }
 
+// Function to populate a QListWidget from a QVector<User>
+void MainWindow::populate_list(QListWidget* listWidget, QVector<User>& users) {
+    listWidget->clear(); // Clear existing items in the list
+
+    // Iterate through the QVector and add items to the QListWidget
+    for (int i = 0; i < users.size(); ++i) {
+        QListWidgetItem* item = new QListWidgetItem(users[i].getName(), listWidget);
+
+        // Store the index of the user in the item's data for retrieval
+        item->setData(Qt::UserRole, i);
+    }
+
+    // Connect the itemClicked signal to a lambda to handle clicks
+    QObject::connect(listWidget, &QListWidget::itemClicked, [&users](QListWidgetItem* item) {
+        int userIndex = item->data(Qt::UserRole).toInt();
+        User& clickedUser = users[userIndex];
+
+        // Perform actions with the clicked user, e.g., print the name
+        qDebug() << "Clicked User:" << clickedUser.getName();
+
+        // If needed, pass the reference elsewhere
+        // Example: someFunction(clickedUser);
+    });
+}
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -61,6 +86,8 @@ void MainWindow::on_finish_profile_clicked() {
     QString height = ui->createHeight->text();
 
     this->control->addUser(User(email, name, gender, age, weight, height));
+
+    populate_list(ui->listProfiles, this->control->allUsers);
 
     stackedWidget->setCurrentIndex(4);
 }

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QListWidget>
 #include <control.h>
 
 QT_BEGIN_NAMESPACE
@@ -20,6 +21,8 @@ public:
     void on_profiles_clicked();
     void on_create_profile_clicked();
     void on_finish_profile_clicked();
+
+    void populate_list(QListWidget* listWidget, QVector<User>& users);
 
 private:
     Ui::MainWindow *ui;
