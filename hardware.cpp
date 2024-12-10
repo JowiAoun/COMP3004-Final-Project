@@ -12,6 +12,9 @@ HealthData* Hardware::takeMeasurements() const{
     //QVector;
 
     //HealthData cleandata = new HealthData();
+
+	// deplete the device's battery by a random amount between the values of 1 and 10
+	this->battery -= (rand() % 10) + 1;
 }
 
 
@@ -24,6 +27,9 @@ bool Hardware::isCriticalPower() {
 }
 
 bool Hardware::gracefulShutdown() {
+	// save user data
+	
+
 	exit(0);
 	return true;
 }

@@ -71,8 +71,8 @@ void Control::updateUser(QString email, const User& user) {
     }
     saveUsersToFile(allUsers, filepath);
     qDebug() << "Updated user " << name;
-
 }
+
 
 bool Control::login(QString email) {
     bool loggedIn = false;
