@@ -36,6 +36,7 @@ class Control {
 
         void setCurrentUser(User* user);
 
+
         void saveUsers();
         User* currentUser;
         QVector<User> allUsers;
