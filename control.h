@@ -33,9 +33,10 @@ class Control {
         RawHealthData* startNewScan() const;
         bool receiveNewScan(RawHealthData& rawData);
         bool createCharts();
+        QVector<User> allUsers;
     private:
         Hardware* connectedHardware;
-        QVector<User> allUsers;
+
         User* currentUser;
 
 };
