@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui printsupport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,6 +18,7 @@ SOURCES += \
     control.cpp \
     hardware.cpp \
     healthData.cpp \
+    qcustomplot.cpp \
     rawHealthData.cpp \
     user.cpp
 
@@ -26,6 +27,7 @@ HEADERS += \
     control.h \
     hardware.h \
     healthData.h \
+    qcustomplot.h \
     rawHealthData.h \
     user.h
 
