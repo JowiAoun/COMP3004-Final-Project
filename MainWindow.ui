@@ -455,6 +455,32 @@ QPushButton:hover {
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <widget class="QPushButton" name="updatePushButton">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>360</y>
+         <width>83</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Update</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="deletePushButton">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>400</y>
+         <width>83</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Delete</string>
+       </property>
+      </widget>
      </widget>
      <zorder>frame_4</zorder>
      <zorder>btnCreateProfile_2</zorder>
@@ -671,6 +697,223 @@ QPushButton:hover {
      <zorder>label_20</zorder>
     </widget>
     <widget class="QWidget" name="page4">
+     <widget class="QLabel" name="label_26">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>80</y>
+        <width>91</width>
+        <height>95</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="assets/resources.qrc">:/images/profilePicture.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QWidget" name="formLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>60</y>
+        <width>511</width>
+        <height>542</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formLayout_6">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <property name="rowWrapPolicy">
+        <enum>QFormLayout::DontWrapRows</enum>
+       </property>
+       <property name="labelAlignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
+       <property name="formAlignment">
+        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+       </property>
+       <property name="horizontalSpacing">
+        <number>40</number>
+       </property>
+       <property name="verticalSpacing">
+        <number>20</number>
+       </property>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="updateFirst">
+         <property name="placeholderText">
+          <string>Full name</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_41">
+         <property name="text">
+          <string>Gender</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="updateGender">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="placeholderText">
+          <string>Your gender</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_42">
+         <property name="text">
+          <string>Weight, kg</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="updateWeight">
+         <property name="placeholderText">
+          <string>Your weight</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_43">
+         <property name="text">
+          <string>Height, cm</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="updateHeight">
+         <property name="placeholderText">
+          <string>Your height</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_44">
+         <property name="text">
+          <string>Age</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="updateAge">
+         <property name="placeholderText">
+          <string>Your age</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_45">
+         <property name="text">
+          <string>Email</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="updateEmail">
+         <property name="placeholderText">
+          <string>@gmail.com</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+      <zorder>label_41</zorder>
+      <zorder>updateGender</zorder>
+      <zorder>label_42</zorder>
+      <zorder>updateWeight</zorder>
+      <zorder>label_43</zorder>
+      <zorder>label_44</zorder>
+      <zorder>updateAge</zorder>
+      <zorder>label_45</zorder>
+      <zorder>updateEmail</zorder>
+      <zorder>updateFirst</zorder>
+      <zorder>updateHeight</zorder>
+     </widget>
+     <widget class="QFrame" name="frame_7">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>681</width>
+        <height>911</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: qlineargradient(
+        spread:pad,
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 orange,
+        stop:1 red
+    );</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="updateUserPushButton">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>610</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>Save and continue</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_46">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>30</y>
+        <width>151</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Update profile</string>
+      </property>
+     </widget>
+     <zorder>frame_7</zorder>
+     <zorder>formLayoutWidget_3</zorder>
+     <zorder>updateUserPushButton</zorder>
+     <zorder>label_46</zorder>
+     <zorder>label_26</zorder>
+    </widget>
+    <widget class="QWidget" name="page5">
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
@@ -742,7 +985,7 @@ QPushButton:hover {
      <zorder>label_12</zorder>
      <zorder>listProfiles</zorder>
     </widget>
-    <widget class="QWidget" name="page5">
+    <widget class="QWidget" name="page6">
      <widget class="QLabel" name="labelName">
       <property name="geometry">
        <rect>
@@ -824,7 +1067,7 @@ QPushButton:hover {
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page6">
+    <widget class="QWidget" name="page7">
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
@@ -889,7 +1132,7 @@ QPushButton:hover {
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page7">
+    <widget class="QWidget" name="page8">
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
@@ -954,7 +1197,7 @@ QPushButton:hover {
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page8">
+    <widget class="QWidget" name="page9">
      <widget class="QLabel" name="labelStartMetering">
       <property name="enabled">
        <bool>true</bool>
@@ -1030,7 +1273,7 @@ QPushButton:hover {
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page9">
+    <widget class="QWidget" name="page10">
      <widget class="QWidget" name="formLayoutWidget_2">
       <property name="geometry">
        <rect>
@@ -1196,7 +1439,7 @@ QPushButton:hover {
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page10">
+    <widget class="QWidget" name="page11">
      <widget class="QLabel" name="labelShuttingDown">
       <property name="geometry">
        <rect>

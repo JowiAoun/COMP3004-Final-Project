@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->createPushButton, &QPushButton::clicked, this, &MainWindow::on_create_profile_clicked);
     connect(ui->viewProfilesPushButton, &QPushButton::clicked, this, &MainWindow::on_profiles_clicked);
     connect(ui->saveUserPushButton, &QPushButton::clicked, this, &MainWindow::on_finish_profile_clicked);
+    connect(ui->updatePushButton, &QPushButton::clicked, this, &MainWindow::on_update_profile_clicked);
+    connect(ui->updateUserPushButton, &QPushButton::clicked, this, &MainWindow::on_finish_update_profile_clicked);
 
     this->control = new Control();
 
@@ -72,13 +74,14 @@ void MainWindow::on_switchButton_clicked()
 
 void MainWindow::on_profiles_clicked() {
     QStackedWidget* stackedWidget = ui->stackedWidget;
-    stackedWidget->setCurrentIndex(4);
+    stackedWidget->setCurrentIndex(5);
 }
 
 void MainWindow::on_create_profile_clicked() {
     QStackedWidget* stackedWidget = ui->stackedWidget;
     stackedWidget->setCurrentIndex(3);
 }
+
 
 void MainWindow::on_finish_profile_clicked() {
     QStackedWidget* stackedWidget = ui->stackedWidget;
@@ -94,7 +97,66 @@ void MainWindow::on_finish_profile_clicked() {
 
     populate_list(ui->listProfiles, this->control->allUsers);
 
+    stackedWidget->setCurrentIndex(5);
+}
+
+void MainWindow::on_update_profile_clicked() {
+    if (control->currentUser == NULL) {
+        qDebug() << "No current user";
+        return;
+    }
+
+    QStackedWidget* stackedWidget = ui->stackedWidget;
+
+    ui->updateFirst->setText(control->currentUser->getName());
+    ui->updateGender->setText(control->currentUser->getGender());
+    ui->updateEmail->setText(control->currentUser->getEmail());
+    ui->updateAge->setText(control->currentUser->getAge());
+    ui->updateWeight->setText(control->currentUser->getWeight());
+    ui->updateHeight->setText(control->currentUser->getHeight());
+
+    QString name = ui->updateFirst->text();
+    QString gender = ui->updateGender->text();
+    QString email = ui->updateEmail->text();
+    QString age = ui->updateAge->text();
+    QString weight = ui->updateWeight->text();
+    QString height = ui->updateHeight->text();
+
+    this->control->currentUser->setName(name);
+    this->control->currentUser->setGender(gender);
+    this->control->currentUser->setEmail(email);
+    this->control->currentUser->setAge(age);
+    this->control->currentUser->setWeight(weight);
+    this->control->currentUser->setHeight(height);
+
     stackedWidget->setCurrentIndex(4);
 }
 
+void MainWindow::on_finish_update_profile_clicked() {
+    if (control->currentUser == NULL) {
+        return;
+    }
+
+    QStackedWidget* stackedWidget = ui->stackedWidget;
+
+    QString name = ui->updateFirst->text();
+    QString gender = ui->updateGender->text();
+    QString email = ui->updateEmail->text();
+    QString age = ui->updateAge->text();
+    QString weight = ui->updateWeight->text();
+    QString height = ui->updateHeight->text();
+
+    this->control->currentUser->setName(name);
+    this->control->currentUser->setGender(gender);
+    this->control->currentUser->setEmail(email);
+    this->control->currentUser->setAge(age);
+    this->control->currentUser->setWeight(weight);
+    this->control->currentUser->setHeight(height);
+
+    control->saveUsers();
+
+    populate_list(ui->listProfiles, this->control->allUsers);
+
+    stackedWidget->setCurrentIndex(3);
+}
 

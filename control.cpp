@@ -262,3 +262,8 @@ void Control::setCurrentUser(User* user) {
     this->currentUser = user;
     qDebug() << "Current user set to " << user->getName();
 }
+
+
+void Control::saveUsers() {
+    saveUsersToFile(allUsers, filepath);
+}

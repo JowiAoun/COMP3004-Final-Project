@@ -10,6 +10,7 @@
 
 int main(int argc, char *argv[])
 {
+        /*
     QVector<User> users;
     //Control control;
 
@@ -59,6 +60,7 @@ int main(int argc, char *argv[])
                          << loadedHealthData[j].displayData();
             }
         }
+        */
     /*
     // Scan
     // TODO: connect to hardware
