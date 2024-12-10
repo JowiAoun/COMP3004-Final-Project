@@ -20,7 +20,7 @@ class Control {
         void deleteUser(QString email);
         void updateUser(QString email, const User& user);
         bool login(QString email);
-        bool createAccount(QString email, QString password, QString name, int age, QString gender, float height, float weight);
+        bool createAccount(QString email, QString password, QString name, QString age, QString gender, QString height, QString weight);
 
         HealthData* processData(RawHealthData& rawHealthData);
         bool saveHealthData(const HealthData& healthData);

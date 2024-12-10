@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <control.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -16,8 +17,13 @@ public:
     ~MainWindow();
 
     void on_switchButton_clicked();
+    void on_profiles_clicked();
+    void on_create_profile_clicked();
+    void on_finish_profile_clicked();
 
 private:
     Ui::MainWindow *ui;
+    Control* control;
+
 };
 #endif // MAINWINDOW_H

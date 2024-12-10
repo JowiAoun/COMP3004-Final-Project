@@ -97,7 +97,7 @@ bool Control::login(QString email) {
     return true;
 }
 
-bool Control::createAccount(QString email, QString password, QString name, int age, QString gender, float height, float weight) {
+bool Control::createAccount(QString email, QString password, QString name, QString age, QString gender, QString height, QString weight) {
     bool userExists = false;
     // if user already exists
     for (int i=0; i<allUsers.size(); ++i) {

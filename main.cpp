@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
     /*
     QVector<User> users;
-    Control control;
+    //Control control;
 
     // Add users to the QVector
     users.append(User("jane.doe@example.com", "Jane Doe", "Female", 28, 65.0, 170.0));
@@ -60,7 +60,7 @@ int main(int argc, char *argv[])
                          << loadedHealthData[j].displayData();
             }
         }
-
+    /*
     // Scan
     // TODO: connect to hardware
 
