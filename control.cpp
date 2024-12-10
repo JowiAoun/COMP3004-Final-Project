@@ -6,7 +6,6 @@
 
 #include "control.h"
 
-
 namespace{
     const std::string filepath = "users.txt";
 }
@@ -24,6 +23,48 @@ Control::~Control() {
         delete connectedHardware;
     }
     currentUser = NULL;
+}
+
+User* Control::getCurrentUser() {
+  return (this->currentUser);
+}
+
+bool Control::doesUserExist(QString email) {
+  bool userExists = false;
+
+  for (int i = 0; i < allUsers.size(); i++) {
+    if (allUsers[i].getEmail() == email) {
+      userExists = true;
+      break;
+    }
+  }
+
+  if (userExists == false) {
+    QDebug() << "User does not exist";
+    return false;
+  }
+
+  return true;
+}
+
+int Control::getUserIndex(QString email) {
+  for (int i = 0; i < allUsers.size(); i++) {
+    if (allUsers[i].getEmail() == email) {
+      return i;
+    }
+  }
+
+  throw std::runtime_error("User does not exist");
+}
+
+User Control::getUserByEmail(QString email) {
+  for (int i = 0; i < allUsers.size(); i++) {
+    if (allUsers[i].getEmail() == email) {
+      return allUsers[i];
+    }
+  }
+
+  throw std::runtime_error("User does not exist");
 }
 
 void Control::addUser(User user) {
@@ -181,7 +222,11 @@ bool Control::connectToHardware(Hardware* hardware) {
 }
 
 bool Control::disconnectFromHardware() {
-    // TODO: for graceful shutdown??
+    if (connectedHardware != NULL) {
+      delete connectedHardware;
+      connectedHardware = NULL;
+    }
+    return true;
 }
 
 int Control::getBatteryStatus() const {
@@ -224,7 +269,6 @@ RawHealthData* Control::startNewScan() const {
     }
     else {
         RawHealthData* rawHealthData = connectedHardware->takeMeasurements();
-        // TODO: lower battery 
         return rawHealthData;
     }
     return NULL;
@@ -269,3 +313,4 @@ void Control::setCurrentUser(User* user) {
 void Control::saveUsers() {
     saveUsersToFile(allUsers, filepath);
 }
+
