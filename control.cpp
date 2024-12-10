@@ -260,7 +260,9 @@ bool Control::createCharts() {
 
 void Control::setCurrentUser(User* user) {
     this->currentUser = user;
-    qDebug() << "Current user set to " << user->getName();
+    if (currentUser != NULL) {
+        qDebug() << "Current user set to " << user->getName();
+    }
 }
 
 

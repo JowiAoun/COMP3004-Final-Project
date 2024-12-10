@@ -24,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->saveUserPushButton, &QPushButton::clicked, this, &MainWindow::on_finish_profile_clicked);
     connect(ui->updatePushButton, &QPushButton::clicked, this, &MainWindow::on_update_profile_clicked);
     connect(ui->updateUserPushButton, &QPushButton::clicked, this, &MainWindow::on_finish_update_profile_clicked);
+    connect(ui->deletePushButton, &QPushButton::clicked, this, &MainWindow::on_delete_profile_clicked);
 
     this->control = new Control();
 
@@ -157,6 +158,28 @@ void MainWindow::on_finish_update_profile_clicked() {
 
     populate_list(ui->listProfiles, this->control->allUsers);
 
-    stackedWidget->setCurrentIndex(3);
+    stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::on_delete_profile_clicked() {
+    if (control->currentUser == NULL) {
+        qDebug() << "No current user";
+        return;
+    }
+
+    auto it = std::find_if(control->allUsers.begin(), control->allUsers.end(),
+                           [this](const User& user) {
+                               return &user == this->control->currentUser;
+                           });
+
+    if (it != control->allUsers.end()) {
+        int index = std::distance(control->allUsers.begin(), it);
+        // Remove the object
+        control->allUsers.removeAt(index);
+    }
+
+    control->setCurrentUser(NULL);
+    control->saveUsers();
+    populate_list(ui->listProfiles, this->control->allUsers);
 }
 
