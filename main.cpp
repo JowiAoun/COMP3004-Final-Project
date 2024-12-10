@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
     //Control control;
 
     // Add users to the QVector
-    users.append(User("jane.doe@example.com", "Jane Doe", "Female", 28, 65.0, 170.0));
-    users.append(User("john.smith@example.com", "John Smith", "Male", 35, 80.0, 180.0));
+    users.append(User("jane.doe@example.com", "Jane Doe", "Female", "28", "65", "170"));
+    users.append(User("john.smith@example.com", "John Smith", "Male", "34", "80", "180"));
 
     // Add Health Data for the users
     QVector<HealthData> healthData1;
@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 
     // TODO: hardware shutdown
 
-    return 0;
+    return 0;*/
 
     QApplication a(argc, argv);
     MainWindow w;

@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->saveUserPushButton, &QPushButton::clicked, this, &MainWindow::on_finish_profile_clicked);
 
     this->control = new Control();
+
+    populate_list(ui->listProfiles, this->control->allUsers);
 }
 
 // Function to populate a QListWidget from a QVector<User>
@@ -39,13 +41,16 @@ void MainWindow::populate_list(QListWidget* listWidget, QVector<User>& users) {
     }
 
     // Connect the itemClicked signal to a lambda to handle clicks
-    QObject::connect(listWidget, &QListWidget::itemClicked, [&users](QListWidgetItem* item) {
+    QObject::connect(listWidget, &QListWidget::itemClicked, this, [this, &users](QListWidgetItem* item) {
         int userIndex = item->data(Qt::UserRole).toInt();
         User& clickedUser = users[userIndex];
 
         // Perform actions with the clicked user, e.g., print the name
         qDebug() << "Clicked User:" << clickedUser.getName();
+        this->control->setCurrentUser(&clickedUser);
 
+        QStackedWidget* stackedWidget = ui->stackedWidget;
+        stackedWidget->setCurrentIndex(2);
         // If needed, pass the reference elsewhere
         // Example: someFunction(clickedUser);
     });
