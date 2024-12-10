@@ -324,6 +324,38 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page3">
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>30</y>
+        <width>151</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Choose profile</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listProfiles">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>90</y>
+        <width>451</width>
+        <height>451</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page4">
      <widget class="QLabel" name="labelName">
       <property name="geometry">
        <rect>
@@ -387,7 +419,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page4">
+    <widget class="QWidget" name="page5">
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
@@ -422,7 +454,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page">
+    <widget class="QWidget" name="page6">
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
