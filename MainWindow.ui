@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>8</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -497,21 +497,21 @@ QPushButton:hover {
         <number>20</number>
        </property>
        <item row="0" column="1">
-        <widget class="QLineEdit" name="lineEdit">
+        <widget class="QLineEdit" name="createFirst">
          <property name="placeholderText">
-          <string>Firstname</string>
+          <string>Full name</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
+       <item row="1" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
           <string>Gender</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_8">
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="createGender">
          <property name="text">
           <string/>
          </property>
@@ -520,89 +520,65 @@ QPushButton:hover {
          </property>
         </widget>
        </item>
-       <item row="3" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label">
          <property name="text">
           <string>Weight, kg</string>
          </property>
         </widget>
        </item>
-       <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_3">
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="createWeight">
          <property name="placeholderText">
           <string>Your weight</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0">
+       <item row="3" column="0">
         <widget class="QLabel" name="label_2">
          <property name="text">
           <string>Height, cm</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="lineEdit_4">
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="createHeight">
          <property name="placeholderText">
           <string>Your height</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="4" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Age</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
-        <widget class="QLineEdit" name="lineEdit_5">
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="createAge">
          <property name="placeholderText">
           <string>Your age</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0">
+       <item row="5" column="0">
         <widget class="QLabel" name="label_4">
          <property name="text">
-          <string>Country</string>
+          <string>Email</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="1">
-        <widget class="QLineEdit" name="lineEdit_6">
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="createEmail">
          <property name="placeholderText">
-          <string>Canada</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="0">
-        <widget class="QLabel" name="label_5">
-         <property name="text">
-          <string>Phone</string>
-         </property>
-        </widget>
-       </item>
-       <item row="7" column="1">
-        <widget class="QLineEdit" name="lineEdit_7">
-         <property name="placeholderText">
-          <string>6131111111</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit_2">
-         <property name="text">
-          <string/>
-         </property>
-         <property name="placeholderText">
-          <string>Lastname</string>
+          <string>@gmail.com</string>
          </property>
         </widget>
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="btnSave">
+     <widget class="QPushButton" name="saveUserPushButton">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -690,7 +666,7 @@ QPushButton:hover {
      </widget>
      <zorder>frame_5</zorder>
      <zorder>formLayoutWidget</zorder>
-     <zorder>btnSave</zorder>
+     <zorder>saveUserPushButton</zorder>
      <zorder>label_18</zorder>
      <zorder>label_20</zorder>
     </widget>
@@ -758,7 +734,7 @@ QPushButton:hover {
         </rect>
        </property>
        <property name="text">
-        <string>PushButton</string>
+        <string>Create</string>
        </property>
       </widget>
      </widget>

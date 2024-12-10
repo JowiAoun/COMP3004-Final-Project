@@ -17,8 +17,8 @@
 class User {
   public:
     User();
-    User(QString email, QString name, QString gender, int age, float weight, float height);
-    User(QString email, QString name, QString gender, int age, float weight, float height, QVector<HealthData>);
+    User(QString email, QString name, QString gender, QString age, QString weight, QString height);
+    User(QString email, QString name, QString gender, QString age, QString weight, QString height, QVector<HealthData>);
     ~User();
 
     QString getEmail() const;
@@ -30,14 +30,14 @@ class User {
     QString getGender() const;
     void setGender(QString gender);
 
-    int getAge() const;
-    void setAge(int age);
+    QString getAge() const;
+    void setAge(QString age);
 
-    float getWeight() const;
-    void setWeight(float weight);
+    QString getWeight() const;
+    void setWeight(QString weight);
 
-    float getHeight() const;
-    void setHeight(float height);
+    QString getHeight() const;
+    void setHeight(QString height);
 
     QVector<HealthData> getHistoricalHealthData();
     void setHistoricalHealthData(QVector<HealthData> historicalHealthData);
@@ -46,9 +46,9 @@ class User {
     QString email;
     QString name;
     QString gender;
-    int     age;
-    float   weight;
-    float   height;
+    QString age;
+    QString weight;
+    QString height;
     QVector<HealthData> historicalHealthData;
 
     // Allow serialization access to private members

@@ -4,12 +4,12 @@ User::User() {
   this->email = QString("");
   this->name = QString("");
   this->gender = QString("");
-  this->age = 0;
-  this->weight = 0;
-  this->height = 0;
+  this->age = QString("");
+  this->weight = QString("");
+  this->height = QString("");
 }
 
-User::User(QString email, QString name, QString gender, int age, float weight, float height) {
+User::User(QString email, QString name, QString gender, QString age, QString weight, QString height) {
   this->email = email;
   this->name = name;
   this->gender = gender;
@@ -18,7 +18,7 @@ User::User(QString email, QString name, QString gender, int age, float weight, f
   this->height = height;
 }
 
-User::User(QString email, QString name, QString gender, int age, float weight, float height, QVector<HealthData> historicalHealthData) {
+User::User(QString email, QString name, QString gender, QString age, QString weight, QString height, QVector<HealthData> historicalHealthData) {
   this->email = email;
   this->name = name;
   this->gender = gender;
@@ -53,24 +53,24 @@ void User::setGender(QString gender) {
   this->gender = gender;
 }
 
-int User::getAge() const {
+QString User::getAge() const {
   return this->age;
 }
-void User::setAge(int age) {
+void User::setAge(QString age) {
   this->age = age;
 }
 
-float User::getWeight() const {
+QString User::getWeight() const {
   return this->weight;
 }
-void User::setWeight(float weight) {
+void User::setWeight(QString weight) {
   this->weight = weight;
 }
 
-float User::getHeight() const {
+QString User::getHeight() const {
   return this->height;
 }
-void User::setHeight(float height) {
+void User::setHeight(QString height) {
   this->height = height;
 }
 
@@ -86,13 +86,16 @@ void User::serialize(Archive& ar, const unsigned int version) {
     std::string nameStd = name.toStdString();
     std::string genderStd = gender.toStdString();
     std::string emailStd = email.toStdString();
+    std::string ageStd = age.toStdString();
+    std::string weightStd = weight.toStdString();
+    std::string heightStd = height.toStdString();
 
     ar & emailStd;
     ar & nameStd;
     ar & genderStd;
-    ar & age;
-    ar & weight;
-    ar & height;
+    ar & ageStd;
+    ar & weightStd;
+    ar & heightStd;
 
     // Convert QVector to std::vector for serialization
     std::vector<HealthData> healthDataVec(historicalHealthData.begin(), historicalHealthData.end());
@@ -102,6 +105,9 @@ void User::serialize(Archive& ar, const unsigned int version) {
         email = QString::fromStdString(emailStd);
         name = QString::fromStdString(nameStd);
         gender = QString::fromStdString(genderStd);
+        age = QString::fromStdString(ageStd);
+        weight = QString::fromStdString(weightStd);
+        height = QString::fromStdString(heightStd);
         historicalHealthData = QVector<HealthData>(healthDataVec.begin(), healthDataVec.end());
     }
 }
