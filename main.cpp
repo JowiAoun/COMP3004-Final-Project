@@ -10,7 +10,6 @@
 
 int main(int argc, char *argv[])
 {
-    /*
     QVector<User> users;
     Control control;
 
@@ -92,7 +91,7 @@ int main(int argc, char *argv[])
 
     // Data processing
     HealthData* newHealthData = control.processData(rawHealthData);
-    QDebug() << "Display processed Data:" << newHealthData->displayData();
+    qDebug() << "Display processed Data:" << newHealthData->displayData();
 
     // TODO: save data to current user
     // control.saveHealthData(newHealthData);
@@ -106,7 +105,6 @@ int main(int argc, char *argv[])
     // TODO: hardware shutdown
 
     return 0;
-    */
 
     QApplication a(argc, argv);
     MainWindow w;
