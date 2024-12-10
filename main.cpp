@@ -61,10 +61,7 @@ int main(int argc, char *argv[])
         }
 
     /* Scan */
-<<<<<<< HEAD
     // TODO: connect to hardware
-=======
->>>>>>> origin/yun/data-processing
 
     // TODO: select user profile
 
