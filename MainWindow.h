@@ -21,6 +21,9 @@ public:
     void on_profiles_clicked();
     void on_create_profile_clicked();
     void on_finish_profile_clicked();
+    void on_update_profile_clicked();
+    void on_finish_update_profile_clicked();
+
 
     void populate_list(QListWidget* listWidget, QVector<User>& users);
 
