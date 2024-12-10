@@ -6,7 +6,6 @@
 
 #include "control.h"
 
-
 namespace{
     const std::string filepath = "users.txt";
 }
@@ -15,22 +14,63 @@ Control::Control(): currentUser(NULL), connectedHardware(NULL) {
 }
 
 Control::~Control() {
+  int userSize = allUsers.size();
+  for (int i = 0; i < userSize; i++) {
+    // delete allUsers[i];
+  }
+  if (connectedHardware != NULL) {
+    delete connectedHardware;
+  }
+  currentUser = NULL;
+}
 
-    int userSize = allUsers.size();
-    for (int i=0; i<userSize; ++i) {
-        //delete allUsers[i];
+User* Control::getCurrentUser() {
+  return (this->currentUser);
+}
+
+bool Control::doesUserExist(QString email) {
+  bool userExists = false;
+
+  for (int i = 0; i < allUsers.size(); i++) {
+    if (allUsers[i].getEmail() == email) {
+      userExists = true;
+      break;
     }
-    if (connectedHardware != NULL) {
-        delete connectedHardware;
+  }
+
+  if (userExists == false) {
+    QDebug() << "User does not exist";
+    return false;
+  }
+
+  return true;
+}
+
+int Control::getUserIndex(QString email) {
+  for (int i = 0; i < allUsers.size(); i++) {
+    if (allUsers[i].getEmail() == email) {
+      return i;
     }
-    currentUser = NULL;
+  }
+
+  throw std::runtime_error("User does not exist");
+}
+
+User Control::getUserByEmail(QString email) {
+  for (int i = 0; i < allUsers.size(); i++) {
+    if (allUsers[i].getEmail() == email) {
+      return allUsers[i];
+    }
+  }
+
+  throw std::runtime_error("User does not exist");
 }
 
 void Control::addUser(User user) {
-    allUsers.append(User(user.getEmail(), user.getName(), user.getGender(), user.getAge(), user.getWeight(), user.getHeight()));
-    saveUsersToFile(allUsers, filepath);
-    qDebug() << "Added user " << user.getName();
-}
+  if (doesUserExist(user.getEmail())) {
+    qDebug() << "User with email " << user.getEmail()
+             << " already exists, skipping addUser call." return;
+  }
 
 void Control::deleteUser(QString email) {
     bool userExists = false;
@@ -55,6 +95,8 @@ void Control::deleteUser(QString email) {
     saveUsersToFile(allUsers, filepath);
     qDebug() << "Deleted user " << name;
 
+  saveUsersToFile(allUsers, filepath);
+  qDebug() << "Added user " << user.getName();
 }
 
 void Control::updateUser(QString email, const User& user) {
@@ -80,6 +122,52 @@ void Control::updateUser(QString email, const User& user) {
     qDebug() << "Updated user " << name;
 }
 
+bool Control::saveUser(QString email, const User& user) {
+  if (!doesUserExist(email)) {
+    qDebug() << "User with email " << email << " does not exist, skipping deleteUser call."
+             << "Throwing runtime error...";
+
+    throw std::runtime_error("User does not exist");
+
+    return;
+  }
+
+  name = user.getName();
+  user.setEmail(user.getEmail());
+  user.setName(user.getName());
+  user.setGender(user.getGender());
+  user.setAge(user.getAge());
+  user.setWeight(user.getWeight());
+  user.setHeight(user.getHeight());
+
+  saveUsersToFile(allUsers, filepath);
+  qDebug() << "Updated user " << name;
+}
+
+void Control::deleteUser(QString email) {
+  if (!doesUserExist(email)) {
+    qDebug() << "User with email " << email << " does not exist, skipping deleteUser call."
+             << "Throwing runtime error...";
+
+    throw std::runtime_error("User does not exist");
+
+    return;
+  }
+
+  if (email == currentUser->getEmail()) {
+    currentUser = NULL;
+    qDebug() << "Current user account deleted. Log in again";
+  }
+
+  User user = Control::getUserByEmail(email);
+  int userIndex = Control::getUserIndex(email);
+
+  name = user.getName();
+  allUsers.remove(userIndex);
+
+  saveUsersToFile(allUsers, filepath);
+  qDebug() << "Deleted user " << name;
+}
 
 bool Control::login(QString email) {
     bool loggedIn = false;
@@ -91,10 +179,11 @@ bool Control::login(QString email) {
             break;
         }
     }
-    if (loggedIn == false) {
-        throw std::runtime_error("Authentication error");
-    }
-    return true;
+  }
+  if (loggedIn == false) {
+    throw std::runtime_error("Authentication error");
+  }
+  return true;
 }
 
 bool Control::createAccount(QString email, QString password, QString name, QString age, QString gender, QString height, QString weight) {
@@ -107,11 +196,12 @@ bool Control::createAccount(QString email, QString password, QString name, QStri
             return false;
         }
     }
-    // otherwise add new user
-    if (userExists == false) {
-        addUser(User(email, name, gender, age, weight, height));
-    }
-    return true;
+  }
+  // otherwise add new user
+  if (userExists == false) {
+    addUser(User(email, name, gender, age, weight, height));
+  }
+  return true;
 }
 
 HealthData* Control::processData(RawHealthData& rawHealthData) {
