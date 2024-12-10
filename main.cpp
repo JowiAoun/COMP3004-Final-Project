@@ -10,6 +10,7 @@
 
 int main(int argc, char *argv[])
 {
+    /*
     QVector<User> users;
     Control control;
 
@@ -60,7 +61,7 @@ int main(int argc, char *argv[])
             }
         }
 
-    /* Scan */
+    // Scan
     // TODO: connect to hardware
 
     // TODO: select user profile
@@ -105,10 +106,11 @@ int main(int argc, char *argv[])
     // TODO: hardware shutdown
 
     return 0;
-    /*
+    */
+
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
     return a.exec();
-    */
+
 }

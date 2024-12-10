@@ -308,7 +308,7 @@ QPushButton:hover {
        <string>Log out</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnCreateProfile_3">
+     <widget class="QPushButton" name="viewProfilesPushButton">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -458,7 +458,7 @@ QPushButton:hover {
      </widget>
      <zorder>frame_4</zorder>
      <zorder>btnCreateProfile_2</zorder>
-     <zorder>btnCreateProfile_3</zorder>
+     <zorder>viewProfilesPushButton</zorder>
      <zorder>btnCreateProfile_4</zorder>
      <zorder>btnCreateProfile_5</zorder>
      <zorder>btnCreateProfile_6</zorder>
@@ -748,6 +748,19 @@ QPushButton:hover {
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
+      <widget class="QPushButton" name="createPushButton">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>610</y>
+         <width>83</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>PushButton</string>
+       </property>
+      </widget>
      </widget>
      <zorder>frame_6</zorder>
      <zorder>label_12</zorder>

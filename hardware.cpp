@@ -4,8 +4,7 @@ Hardware::Hardware(int hardwareid): hardwareid(hardwareid) {
 
 }
 
-
-HealthData* Hardware::takeMeasurements() const{
+RawHealthData* Hardware::takeMeasurements() const{
 	// im gonna simulate fake data being inputted since im not sure how were
 	// gonna get actual measurements from the device
 	

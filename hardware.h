@@ -4,6 +4,7 @@
 #include <QVector>
 
 #include "healthData.h"
+#include "rawHealthData.h"
 
 class Hardware {
 
@@ -14,7 +15,7 @@ class Hardware {
 		int hardwareid = 1;
 		bool powerConnected = false;
 
-        HealthData* takeMeasurements() const;
+        RawHealthData* takeMeasurements() const;
 
 		bool isLowPower();
 		bool isCriticalPower();
