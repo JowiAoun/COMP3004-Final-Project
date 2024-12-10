@@ -1037,7 +1037,7 @@ QPushButton:hover {
        <rect>
         <x>170</x>
         <y>20</y>
-        <width>259</width>
+        <width>250</width>
         <height>250</height>
        </rect>
       </property>
@@ -1288,7 +1288,7 @@ QPushButton:hover {
      <number>100</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="btnMenu">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -1338,7 +1338,7 @@ QPushButton:hover {
    <zorder>frame</zorder>
    <zorder>stackedWidget</zorder>
    <zorder>battery</zorder>
-   <zorder>pushButton_3</zorder>
+   <zorder>btnMenu</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
