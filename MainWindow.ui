@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -73,6 +73,9 @@
        <number>20</number>
       </property>
       <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
        <number>100</number>
       </property>
       <property name="orientation">
@@ -175,6 +178,93 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page2">
+     <widget class="QPushButton" name="btnCreateProfile_2">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>610</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Log out</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCreateProfile_3">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>350</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Profiles</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCreateProfile_4">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>90</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Home</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCreateProfile_5">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>480</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>History</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCreateProfile_6">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>220</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Measure now</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_22">
+      <property name="geometry">
+       <rect>
+        <x>270</x>
+        <y>30</y>
+        <width>58</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>16</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Menu</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page3">
      <widget class="QWidget" name="formLayoutWidget">
       <property name="geometry">
        <rect>
@@ -362,7 +452,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page3">
+    <widget class="QWidget" name="page4">
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
@@ -394,7 +484,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page4">
+    <widget class="QWidget" name="page5">
      <widget class="QLabel" name="labelName">
       <property name="geometry">
        <rect>
@@ -458,7 +548,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page5">
+    <widget class="QWidget" name="page6">
      <widget class="QLabel" name="label_10">
       <property name="geometry">
        <rect>
@@ -509,7 +599,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page6">
+    <widget class="QWidget" name="page7">
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
@@ -560,7 +650,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page7">
+    <widget class="QWidget" name="page8">
      <widget class="QLabel" name="labelStartMetering">
       <property name="enabled">
        <bool>true</bool>
@@ -632,7 +722,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page8">
+    <widget class="QWidget" name="page9">
      <widget class="QWidget" name="formLayoutWidget_2">
       <property name="geometry">
        <rect>
@@ -798,7 +888,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="page9">
+    <widget class="QWidget" name="page10">
      <widget class="QLabel" name="labelShuttingDown">
       <property name="geometry">
        <rect>
@@ -884,16 +974,6 @@
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>600</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
  </widget>
  <customwidgets>
   <customwidget>
