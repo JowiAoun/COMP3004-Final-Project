@@ -18,9 +18,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>40</y>
+      <y>50</y>
       <width>601</width>
-      <height>731</height>
+      <height>751</height>
      </rect>
     </property>
     <property name="font">
@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -123,10 +123,53 @@
         <height>81</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
       <property name="text">
        <string>Connect to Hardware</string>
       </property>
      </widget>
+     <widget class="QFrame" name="frame_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>681</width>
+        <height>911</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: qlineargradient(
+        spread:pad,
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 orange,
+        stop:1 red
+    );</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <zorder>frame_2</zorder>
+     <zorder>label_6</zorder>
+     <zorder>sliderBattery</zorder>
+     <zorder>label_8</zorder>
+     <zorder>label_9</zorder>
+     <zorder>btnConnect</zorder>
     </widget>
     <widget class="QWidget" name="page1">
      <widget class="QLabel" name="title">
@@ -134,7 +177,7 @@
        <rect>
         <x>180</x>
         <y>100</y>
-        <width>247</width>
+        <width>237</width>
         <height>51</height>
        </rect>
       </property>
@@ -142,9 +185,12 @@
        <font>
         <pointsize>32</pointsize>
         <weight>75</weight>
-        <italic>true</italic>
+        <italic>false</italic>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">color: #ffffff;</string>
       </property>
       <property name="text">
        <string>RaDoTech</string>
@@ -159,6 +205,21 @@
         <height>81</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+	font-weight: bold;
+    border-radius: 25px;
+    color: #52CFB2;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
       <property name="text">
        <string>Create profile</string>
       </property>
@@ -172,10 +233,53 @@
         <height>81</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+	font-weight: bold;
+    border-radius: 25px;
+    color: #52CFB2;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
       <property name="text">
        <string>Enter</string>
       </property>
      </widget>
+     <widget class="QFrame" name="frame_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>681</width>
+        <height>911</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: qlineargradient(
+        spread:pad,
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 orange,
+        stop:1 red
+    );</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <zorder>frame_3</zorder>
+     <zorder>title</zorder>
+     <zorder>btnCreateProfile</zorder>
+     <zorder>btnEnter</zorder>
     </widget>
     <widget class="QWidget" name="page2">
      <widget class="QPushButton" name="btnCreateProfile_2">
@@ -186,6 +290,19 @@
         <width>211</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
       </property>
       <property name="text">
        <string>Log out</string>
@@ -200,6 +317,19 @@
         <height>81</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
       <property name="text">
        <string>Profiles</string>
       </property>
@@ -212,6 +342,19 @@
         <width>211</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
       </property>
       <property name="text">
        <string>Home</string>
@@ -226,6 +369,19 @@
         <height>81</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
       <property name="text">
        <string>History</string>
       </property>
@@ -238,6 +394,19 @@
         <width>211</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
       </property>
       <property name="text">
        <string>Measure now</string>
@@ -263,6 +432,37 @@
        <string>Menu</string>
       </property>
      </widget>
+     <widget class="QFrame" name="frame_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>681</width>
+        <height>911</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: qlineargradient(
+        spread:pad,
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 orange,
+        stop:1 red
+    );</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <zorder>frame_4</zorder>
+     <zorder>btnCreateProfile_2</zorder>
+     <zorder>btnCreateProfile_3</zorder>
+     <zorder>btnCreateProfile_4</zorder>
+     <zorder>btnCreateProfile_5</zorder>
+     <zorder>btnCreateProfile_6</zorder>
+     <zorder>label_22</zorder>
     </widget>
     <widget class="QWidget" name="page3">
      <widget class="QWidget" name="formLayoutWidget">
@@ -411,6 +611,19 @@
         <height>81</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #ffffff;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
       <property name="text">
        <string>Save and continue</string>
       </property>
@@ -451,6 +664,35 @@
        <string>Create profile</string>
       </property>
      </widget>
+     <widget class="QFrame" name="frame_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>681</width>
+        <height>911</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: qlineargradient(
+        spread:pad,
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 orange,
+        stop:1 red
+    );</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <zorder>frame_5</zorder>
+     <zorder>formLayoutWidget</zorder>
+     <zorder>btnSave</zorder>
+     <zorder>label_18</zorder>
+     <zorder>label_20</zorder>
     </widget>
     <widget class="QWidget" name="page4">
      <widget class="QLabel" name="label_12">
@@ -483,6 +725,33 @@
        </rect>
       </property>
      </widget>
+     <widget class="QFrame" name="frame_6">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>681</width>
+        <height>911</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background: qlineargradient(
+        spread:pad,
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 orange,
+        stop:1 red
+    );</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+     </widget>
+     <zorder>frame_6</zorder>
+     <zorder>label_12</zorder>
+     <zorder>listProfiles</zorder>
     </widget>
     <widget class="QWidget" name="page5">
      <widget class="QLabel" name="labelName">
@@ -517,6 +786,20 @@
         <height>81</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #FF9500;
+	color: white;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
       <property name="text">
        <string>Detail</string>
       </property>
@@ -529,6 +812,20 @@
         <width>211</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #FF9500;
+	color: white;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
       </property>
       <property name="text">
        <string>Measure now</string>
@@ -577,6 +874,20 @@
         <width>211</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #FF9500;
+	color: white;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
       </property>
       <property name="text">
        <string>Next</string>
@@ -629,6 +940,20 @@
         <height>81</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #FF9500;
+	color: white;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
+      </property>
       <property name="text">
        <string>Close</string>
       </property>
@@ -678,6 +1003,20 @@
         <width>211</width>
         <height>81</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+    border: 0px;
+	background-color: #FF9500;
+	color: white;
+    border-radius: 25px;
+    padding: 5px;
+}
+
+QPushButton:hover {
+    background-color: #dbdbdb;
+}
+</string>
       </property>
       <property name="text">
        <string>Start metering</string>
@@ -972,6 +1311,34 @@
      <string>☰</string>
     </property>
    </widget>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>-90</y>
+      <width>681</width>
+      <height>911</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background: qlineargradient(
+        spread:pad,
+        x1:0, y1:0, x2:0, y2:1,
+        stop:0 orange,
+        stop:1 red
+    );</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <zorder>frame</zorder>
+   <zorder>stackedWidget</zorder>
+   <zorder>battery</zorder>
+   <zorder>pushButton_3</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
