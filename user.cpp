@@ -117,7 +117,12 @@ void saveUsersToFile(const QVector<User>& users, const std::string& filename) {
 
 QVector<User> loadUsersFromFile(const std::string& filename) {
     std::ifstream ifs(filename);
-    if (!ifs) throw std::runtime_error("Unable to open file for reading");
+    if (!ifs) {
+        qDebug() << "Unable to open file for reading. Creating new file.";
+        QVector<User> users;
+        saveUsersToFile(users, filename);
+        return users;
+    }
 
     boost::archive::text_iarchive ia(ifs);
     std::vector<User> stdUsers;

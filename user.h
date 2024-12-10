@@ -3,6 +3,7 @@
 
 #include "QString"
 #include "QVector"
+#include "QDebug"
 #include <boost/serialization/access.hpp>
 #include <boost/serialization/string.hpp>
 #include <boost/serialization/vector.hpp>
