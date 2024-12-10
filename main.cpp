@@ -61,6 +61,7 @@ int main(int argc, char *argv[])
         }
 
     /* Scan */
+    // TODO: connect to hardware
 
     // TODO: select user profile
 
@@ -88,12 +89,21 @@ int main(int argc, char *argv[])
         }
     }
 
-    // TODO: data processing
-    HealthData* healthData = control.processData(rawHealthData);
-    QDebug() << "Display processed Data:" << healthData->displayData();
-    delete healthData;
+    // Data processing
+    HealthData* newHealthData = control.processData(rawHealthData);
+    QDebug() << "Display processed Data:" << newHealthData->displayData();
+
+    // TODO: save data to current user
+    // control.saveHealthData(newHealthData);
     
- 
+    delete newHealthData;
+
+    // TODO: Test scan methods
+    // RawHealthData* newRawData = control.startNewScan();
+    // control.receiveNewScan(*newRawData)
+
+    // TODO: hardware shutdown
+
     return 0;
     /*
     QApplication a(argc, argv);
