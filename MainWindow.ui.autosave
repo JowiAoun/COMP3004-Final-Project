@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page1">
      <widget class="QLabel" name="title">
@@ -48,7 +48,7 @@
        <string>RaDoTech</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnCreateProfile">
+     <widget class="QPushButton" name="pushButton">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -61,7 +61,7 @@
        <string>Create profile</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnEnter">
+     <widget class="QPushButton" name="pushButton_2">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -152,14 +152,14 @@
        <item row="5" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
-          <string>Date of birth</string>
+          <string>Age</string>
          </property>
         </widget>
        </item>
        <item row="5" column="1">
         <widget class="QLineEdit" name="lineEdit_5">
          <property name="placeholderText">
-          <string>11-20-1990</string>
+          <string>Your age</string>
          </property>
         </widget>
        </item>
@@ -191,484 +191,24 @@
          </property>
         </widget>
        </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Email</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QLineEdit" name="lineEdit_8">
-         <property name="placeholderText">
-          <string>Your email</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="0">
+       <item row="2" column="0">
         <widget class="QLabel" name="label_7">
          <property name="text">
-          <string>Password</string>
-         </property>
-        </widget>
-       </item>
-       <item row="9" column="1">
-        <widget class="QLineEdit" name="lineEdit_9">
-         <property name="placeholderText">
-          <string>Your password</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="label_8">
-         <property name="text">
-          <string>Confirm password</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QLineEdit" name="lineEdit_10">
-         <property name="placeholderText">
-          <string>Your password</string>
+          <string>Gender</string>
          </property>
         </widget>
        </item>
        <item row="2" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout">
-         <item>
-          <widget class="QRadioButton" name="radioButton_2">
-           <property name="text">
-            <string>Male</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="radioButton">
-           <property name="text">
-            <string>Female</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page3">
-     <widget class="QPushButton" name="pushButton">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>80</y>
-        <width>241</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Home</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>200</y>
-        <width>241</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Measure now</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_3">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>320</y>
-        <width>241</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Profiles</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_4">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>440</y>
-        <width>241</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>History</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_5">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
-        <y>560</y>
-        <width>241</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Log out</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page4">
-     <widget class="QLabel" name="label_9">
-      <property name="geometry">
-       <rect>
-        <x>260</x>
-        <y>40</y>
-        <width>75</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>DejaVu Sans</family>
-        <pointsize>16</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>History</string>
-      </property>
-     </widget>
-     <widget class="QColumnView" name="columnView">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>100</y>
-        <width>521</width>
-        <height>401</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_6">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>530</y>
-        <width>241</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Detail</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_7">
-      <property name="geometry">
-       <rect>
-        <x>320</x>
-        <y>530</y>
-        <width>241</width>
-        <height>91</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Measure now</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page5">
-     <widget class="QTextEdit" name="textEdit">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>60</y>
-        <width>401</width>
-        <height>391</height>
-       </rect>
-      </property>
-      <property name="html">
-       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;You will be proceeding with the scan. Follow the instructions to scan the point on your body.&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Each step will show a reference point where you can point your device onto and hold to scan.&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Each step will happen automatically, and will take a few seconds.&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Press &amp;quot;&lt;span style=&quot; font-weight:600;&quot;&gt;Next&lt;/span&gt;&amp;quot; below.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_8">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>570</y>
-        <width>201</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Next</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page6">
-     <widget class="QTextEdit" name="textEdit_2">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>60</y>
-        <width>401</width>
-        <height>391</height>
-       </rect>
-      </property>
-      <property name="html">
-       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Press &amp;quot;&lt;span style=&quot; font-weight:600;&quot;&gt;START&lt;/span&gt;&amp;quot; to start metering.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_9">
-      <property name="geometry">
-       <rect>
-        <x>200</x>
-        <y>580</y>
-        <width>201</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Next</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page7">
-     <widget class="QLineEdit" name="lineEdit_11">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>320</y>
-        <width>471</width>
-        <height>181</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="pushButton_10">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>540</y>
-        <width>191</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Save</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_10">
-      <property name="geometry">
-       <rect>
-        <x>60</x>
-        <y>290</y>
-        <width>62</width>
-        <height>17</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Notes</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label_11">
-      <property name="geometry">
-       <rect>
-        <x>190</x>
-        <y>40</y>
-        <width>192</width>
-        <height>29</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>DejaVu Sans</family>
-        <pointsize>18</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Scan Complete!</string>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="page8">
-     <widget class="QWidget" name="formLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>110</y>
-        <width>431</width>
-        <height>431</height>
-       </rect>
-      </property>
-      <layout class="QFormLayout" name="formLayout_2">
-       <property name="sizeConstraint">
-        <enum>QLayout::SetDefaultConstraint</enum>
-       </property>
-       <property name="fieldGrowthPolicy">
-        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
-       </property>
-       <property name="verticalSpacing">
-        <number>50</number>
-       </property>
-       <item row="0" column="0">
-        <widget class="QLabel" name="label_13">
+        <widget class="QLineEdit" name="lineEdit_8">
          <property name="text">
-          <string>Energy level</string>
+          <string/>
          </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_14">
-         <property name="text">
-          <string>Immune system</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_17">
-         <property name="text">
-          <string>Metabolism</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="0">
-        <widget class="QLabel" name="label_16">
-         <property name="text">
-          <string>Psycho-emotional state</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="label_15">
-         <property name="text">
-          <string>Musculoskeletal system</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="0">
-        <widget class="QLabel" name="label_12">
-         <property name="text">
-          <string>Average value</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <widget class="QLabel" name="labelEnergyLevel">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="labelImmune">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="1">
-        <widget class="QLabel" name="labelMetabolism">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="3" column="1">
-        <widget class="QLabel" name="labelPsycho">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLabel" name="labelMusculo">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>0</string>
-         </property>
-        </widget>
-       </item>
-       <item row="5" column="1">
-        <widget class="QLabel" name="labelAverage">
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>0</string>
+         <property name="placeholderText">
+          <string>Your gender</string>
          </property>
         </widget>
        </item>
       </layout>
-     </widget>
-     <widget class="QLabel" name="label_24">
-      <property name="geometry">
-       <rect>
-        <x>220</x>
-        <y>30</y>
-        <width>171</width>
-        <height>25</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>DejaVu Sans</family>
-        <pointsize>16</pointsize>
-       </font>
-      </property>
-      <property name="text">
-       <string>Metering results</string>
-      </property>
      </widget>
     </widget>
    </widget>
@@ -688,7 +228,7 @@ p, li { white-space: pre-wrap; }
      <number>100</number>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnBack">
+   <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
       <x>10</x>
