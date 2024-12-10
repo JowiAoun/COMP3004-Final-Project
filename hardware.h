@@ -3,26 +3,27 @@
 
 #include <QVector>
 
+#include "control.h"
 #include "healthData.h"
 
 class Hardware {
+ public:
+  Hardware(int hardwareid);
 
-	public:
-        Hardware(int hardwareid);
+  int battery = 0;
+  int hardwareid = 1;
+  bool powerConnected = false;
 
-		int battery = 0;
-		int hardwareid = 1;
-		bool powerConnected = false;
+  HealthData* takeMeasurements();
 
-        HealthData* takeMeasurements() const;
+  bool isLowPower();
+  bool isCriticalPower();
+  bool gracefulShutdown(Control controlInstance);
+  bool connectionLoss();
+  const bool setBatteryPower(int power);
 
-		bool isLowPower();
-		bool isCriticalPower();
-		bool gracefulShutdown();
-		bool connectionLoss();
 
-		QVector<int> rawdata; // a series of number values for each Hn from H1 to H6 then F1 to F6
+  QVector<int> rawdata;  // a series of number values for each Hn from H1 to H6 then F1 to F6
 };
-
 
 #endif
