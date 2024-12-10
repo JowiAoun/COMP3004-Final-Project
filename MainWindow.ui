@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -486,6 +486,69 @@
       </property>
       <property name="text">
        <string>Close</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page7">
+     <widget class="QLabel" name="labelStartMetering">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>540</y>
+        <width>203</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string>Press START button to see data</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnMetering">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>590</y>
+        <width>211</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Start metering</string>
+      </property>
+     </widget>
+     <widget class="QChartView" name="metricsGraph_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>280</y>
+        <width>551</width>
+        <height>221</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="imageBodyPoint">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>20</y>
+        <width>250</width>
+        <height>250</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>250</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </widget>
