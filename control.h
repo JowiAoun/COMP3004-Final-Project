@@ -1,42 +1,55 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
-#include "user.h"
+#include <string>
+
+#include "QDebug"
+#include "QVector"
 #include "hardware.h"
 #include "healthData.h"
 #include "rawHealthData.h"
-
-#include <string>
-
-#include "QVector"
-#include "QDebug"
+#include "user.h"
 
 class Control {
-    public:
-        Control();
-        ~Control();
+ public:
+  Control();
+  ~Control();
 
-        void addUser(User user);
-        void deleteUser(QString email);
-        void updateUser(QString email, const User& user);
-        // bool login(QString email, QString password);
-        bool login(QString email);
-        bool createAccount(QString email, QString password, QString name, int age, QString gender, float height, float weight);
+  // Getters
+  User* getCurrentUser();
+  User getUserByEmail(QString email);
 
-        HealthData* processData(const RawHealthData& rawHealthData);
-        void displayHistoricalData(const QVector<HealthData>& historicalData);
+  // Validity Checkers
+  int getUserIndex(QString email);
+  bool doesUserExist(QString email);
 
-        bool connectToHardware(Hardware* hardware);
-        bool disconnectFromHardware(Hardware* hardware);
+  // CRUD Methods
+  void addUser(User user);
+  void deleteUser(QString email);
+  void updateUser(QString email, const User& user);
+  void saveUser(QString email, const User& user);
+  // bool login(QString email, QString password);
 
-        bool createNewScan(const Hardware&);
-        bool createCharts();
-    private:
-        Hardware* connectedHardware;
-        QVector<User> allUsers;
-        User* currentUser;
+  // Authentication Methods
+  bool login(QString email);
+  bool createAccount(QString email, QString password, QString name, int age, QString gender,
+                     float height, float weight);
 
+  // Data Processing Methods
+  HealthData* processData(const RawHealthData& rawHealthData);
+  void displayHistoricalData(const QVector<HealthData>& historicalData);
+
+  // Hardware Methods
+  bool connectToHardware(Hardware* hardware);
+  bool disconnectFromHardware(Hardware* hardware);
+
+  bool createNewScan(const Hardware&);
+  bool createCharts();
+
+ private:
+  Hardware* connectedHardware;
+  QVector<User> allUsers;
+  User* currentUser;
 };
 
 #endif
-

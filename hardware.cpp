@@ -1,5 +1,7 @@
 #include "hardware.h"
+
 #include "control.h"
+
 
 Hardware::Hardware(int hardwareid)
     : hardwareid(hardwareid),
@@ -51,6 +53,10 @@ bool Hardware::gracefulShutdown(Control controlInstance) {
       // Log the error here
       return false;
     }
+
+    // disconnect hardware
+    this->powerConnected = false;
+    controlInstance.disconnectFromHardware(this->hardwareid);
 
     // any additional cleanup here
 
