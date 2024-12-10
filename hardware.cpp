@@ -28,6 +28,11 @@ bool Hardware::gracefulShutdown() {
 	return true;
 }
 
+int Hardware::getBattery() const {
+	return this->battery;
+}
+
+
 bool Hardware::connectionLoss() {
 	return this->powerConnected;
 }

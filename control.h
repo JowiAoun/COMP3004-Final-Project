@@ -19,17 +19,19 @@ class Control {
         void addUser(User user);
         void deleteUser(QString email);
         void updateUser(QString email, const User& user);
-        // bool login(QString email, QString password);
         bool login(QString email);
         bool createAccount(QString email, QString password, QString name, int age, QString gender, float height, float weight);
 
         HealthData* processData(const RawHealthData& rawHealthData);
+        bool saveHealthData(const HealthData& healthData);
         void displayHistoricalData(const QVector<HealthData>& historicalData);
 
         bool connectToHardware(Hardware* hardware);
-        bool disconnectFromHardware(Hardware* hardware);
+        bool disconnectFromHardware();
+        int getBatteryStatus() const;
 
-        bool createNewScan(const Hardware&);
+        RawHealthData* startNewScan();
+        bool receiveNewScan(const RawHealthData& rawData) const;
         bool createCharts();
     private:
         Hardware* connectedHardware;
