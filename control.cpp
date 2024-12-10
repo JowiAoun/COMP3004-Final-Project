@@ -1,4 +1,11 @@
+#define C_HEALTHY_BATTERY 0
+#define C_LOW_POWER_BATTERY 1
+#define C_CRITICAL_BATTERY 2
+
+
+
 #include "control.h"
+
 
 namespace{
     const std::string filepath = "users.txt";
@@ -184,15 +191,15 @@ int Control::getBatteryStatus() const {
     if (connectedHardware->isCriticalPower()) {
         QDebug() << "Critical Power:" << connectedHardware->getBattery();
         QDebug() << "Shutting down..." ;
-        return 0;
+        return C_CRITICAL_BATTERY;
     }
     if (connectedHardware->isLowPower()) {
         QDebug() << "Low Power warning:" << connectedHardware->getBattery();
-        return 1;
+        return C_LOW_POWER_BATTERY;
     }
     QDebug() << "Healthy Battery:" << connectedHardware->getBattery();
     // TODO: send info to ui?
-    return 2;
+    return C_HEALTHY_BATTERY;
 }
 
     // TODO:
