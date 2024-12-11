@@ -15,18 +15,16 @@ class Hardware {
   int hardwareid = 1;
   bool powerConnected = false;
 
-  HealthData* takeMeasurements();
+  RawHealthData* takeMeasurements();
 
   bool isLowPower();
   bool isCriticalPower();
-  bool gracefulShutdown(Control controlInstance);
+  bool gracefulShutdown(Control& controlInstance);
   bool connectionLoss();
   const bool setBatteryPower(int power);
   int getBattery() const;
 
 
-
-		int getBattery() const;
 
 		QVector<int> rawdata; // a series of number values for each Hn from H1 to H6 then F1 to F6
 };

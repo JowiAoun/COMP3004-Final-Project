@@ -29,33 +29,6 @@ User* Control::getCurrentUser() {
   return (this->currentUser);
 }
 
-bool Control::doesUserExist(QString email) {
-  bool userExists = false;
-
-  for (int i = 0; i < allUsers.size(); i++) {
-    if (allUsers[i].getEmail() == email) {
-      userExists = true;
-      break;
-    }
-  }
-
-  if (userExists == false) {
-    QDebug() << "User does not exist";
-    return false;
-  }
-
-  return true;
-}
-
-int Control::getUserIndex(QString email) {
-  for (int i = 0; i < allUsers.size(); i++) {
-    if (allUsers[i].getEmail() == email) {
-      return i;
-    }
-  }
-
-  throw std::runtime_error("User does not exist");
-}
 
 User Control::getUserByEmail(QString email) {
   for (int i = 0; i < allUsers.size(); i++) {
@@ -261,7 +234,7 @@ RawHealthData* Control::startNewScan() const {
     }
 
     if (getBatteryStatus() == 0) {
-        connectedHardware->gracefulShutdown();
+        connectedHardware->gracefulShutdown(*this);
         return NULL;
     }
     if (currentUser == NULL) {

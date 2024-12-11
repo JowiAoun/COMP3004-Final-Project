@@ -20,10 +20,6 @@ class Control {
         User* getCurrentUser();
         User getUserByEmail(QString email);
 
-        // Validity Checkers
-        int getUserIndex(QString email);
-        bool doesUserExist(QString email);
-
         //CRUD
         void addUser(User user);
         void deleteUser(QString email);

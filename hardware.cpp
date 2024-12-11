@@ -9,7 +9,7 @@ Hardware::Hardware(int hardwareid)
       powerConnected(true)  // Initialize power status
 {}
 
-HealthData* Hardware::takeMeasurements() {
+RawHealthData* Hardware::takeMeasurements() {
   // Create new HealthData object with simulated measurements
   auto* healthData = new HealthData();
 
@@ -37,7 +37,7 @@ bool Hardware::isLowPower() { return (this->battery <= 15 && this->battery > 5);
 
 bool Hardware::isCriticalPower() { return (this->battery <= 5); }
 
-bool Hardware::gracefulShutdown(Control controlInstance) {
+bool Hardware::gracefulShutdown(Control& controlInstance) {
   try {
     User* user = controlInstance.getCurrentUser();
     if (!user) {
@@ -56,7 +56,7 @@ bool Hardware::gracefulShutdown(Control controlInstance) {
 
     // disconnect hardware
     this->powerConnected = false;
-    controlInstance.disconnectFromHardware(this->hardwareid);
+    controlInstance.disconnectFromHardware();
 
     // any additional cleanup here
 
