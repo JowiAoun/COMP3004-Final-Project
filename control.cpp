@@ -41,6 +41,9 @@ User Control::getUserByEmail(QString email) {
 }
 
 void Control::addUser(User user) {
+    if (allUsers.size() >= 5) {
+        qDebug() << "5 user limit reached";
+    }
     allUsers.append(User(user.getEmail(), user.getName(), user.getGender(), user.getAge(), user.getWeight(), user.getHeight()));
     saveUsersToFile(allUsers, filepath);
     qDebug() << "Added user " << user.getName();
@@ -280,6 +283,27 @@ void Control::setCurrentUser(User* user) {
     if (currentUser != NULL) {
         qDebug() << "Current user set to " << user->getName();
     }
+}
+
+void Control::deleteCurrentUser() {
+    if (currentUser == NULL) {
+        qDebug() << "No current user";
+        return;
+    }
+
+    auto it = std::find_if(allUsers.begin(), allUsers.end(),
+                           [this](const User& user) {
+                               return &user == this->currentUser;
+                           });
+
+    if (it != allUsers.end()) {
+        int index = std::distance(allUsers.begin(), it);
+        // Remove the object
+        allUsers.removeAt(index);
+    }
+
+    setCurrentUser(NULL);
+    saveUsers();
 }
 
 

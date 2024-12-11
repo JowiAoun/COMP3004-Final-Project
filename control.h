@@ -43,6 +43,8 @@ class Control {
         bool receiveNewScan(RawHealthData& rawData);
         bool createCharts();
 
+        void deleteCurrentUser();
+
         void setCurrentUser(User* user);
 
         void saveUsers();

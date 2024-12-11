@@ -96,6 +96,13 @@ void MainWindow::on_finish_profile_clicked() {
 
     this->control->addUser(User(email, name, gender, age, weight, height));
 
+    ui->createFirst->setText("");
+    ui->createGender->setText("");
+    ui->createEmail->setText("");
+    ui->createAge->setText("");
+    ui->createWeight->setText("");
+    ui->createHeight->setText("");
+
     populate_list(ui->listProfiles, this->control->allUsers);
 
     stackedWidget->setCurrentIndex(5);
@@ -154,6 +161,13 @@ void MainWindow::on_finish_update_profile_clicked() {
     this->control->currentUser->setWeight(weight);
     this->control->currentUser->setHeight(height);
 
+    ui->updateFirst->setText("");
+    ui->updateGender->setText("");
+    ui->updateEmail->setText("");
+    ui->updateAge->setText("");
+    ui->updateWeight->setText("");
+    ui->updateHeight->setText("");
+
     control->saveUsers();
 
     populate_list(ui->listProfiles, this->control->allUsers);
@@ -162,24 +176,7 @@ void MainWindow::on_finish_update_profile_clicked() {
 }
 
 void MainWindow::on_delete_profile_clicked() {
-    if (control->currentUser == NULL) {
-        qDebug() << "No current user";
-        return;
-    }
-
-    auto it = std::find_if(control->allUsers.begin(), control->allUsers.end(),
-                           [this](const User& user) {
-                               return &user == this->control->currentUser;
-                           });
-
-    if (it != control->allUsers.end()) {
-        int index = std::distance(control->allUsers.begin(), it);
-        // Remove the object
-        control->allUsers.removeAt(index);
-    }
-
-    control->setCurrentUser(NULL);
-    control->saveUsers();
+    control->deleteCurrentUser();
     populate_list(ui->listProfiles, this->control->allUsers);
 }
 
