@@ -1,0 +1,18 @@
+title RaDoTech User updates and deletes profile
+
+participant Person
+participant View
+participant Control
+participant User
+
+Person->View:selectUserButton()
+Person->View:updateUserButton()
+View->User:setName()
+View->User:setGender()
+View->User:setEmail()
+View->User:setAge()
+View->User:setWeight()
+View->User:setHeight()
+Person->View:submitButton()
+Person->View:deleteUserButton()
+View->Control:deleteCurrentUser()
