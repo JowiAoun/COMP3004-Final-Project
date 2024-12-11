@@ -13,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     // Get the stacked widget and the button from the UI
-    QStackedWidget* stackedWidget = ui->stackedWidget;
     ui->createAge->setValidator(new QIntValidator(0, 150, this));
     ui->createHeight->setValidator(new QDoubleValidator(0, 999, 2, this));
     ui->createWeight->setValidator(new QDoubleValidator(0, 999, 2, this));
@@ -29,6 +28,9 @@ MainWindow::MainWindow(QWidget *parent)
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::show_battery);
     timer->start(1000);
+    connect(ui->btnMeasureNow1, &QPushButton::clicked, this, &MainWindow::on_btnMeasureNow_clicked);
+    connect(ui->btnMeasureNow2, &QPushButton::clicked, this, &MainWindow::on_btnMeasureNow_clicked);
+    connect(ui->btnMenu, &QPushButton::clicked, this, &MainWindow::on_btnMenu_clicked);
 
     this->control = new Control();
     this->hardware = new Hardware(1);
@@ -193,5 +195,15 @@ void MainWindow::on_finish_update_profile_clicked() {
 void MainWindow::on_delete_profile_clicked() {
     control->deleteCurrentUser();
     populate_list(ui->listProfiles, this->control->allUsers);
+}
+
+void MainWindow::on_btnMeasureNow_clicked() {
+    QStackedWidget *stackedWidget = ui->stackedWidget;;
+    stackedWidget->setCurrentIndex(7);
+}
+
+void MainWindow::on_btnMenu_clicked() {
+    QStackedWidget *stackedWidget = ui->stackedWidget;;
+    stackedWidget->setCurrentIndex(2);
 }
 
