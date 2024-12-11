@@ -1,31 +1,46 @@
-title Safety Scenario: RadoTech user wants to get measurements taken but the battery is low and eventually dies down
+title Safety Scenario: RadoTech user takes two measurements but the battery is low and eventually dies down
 
-participant "person" as Person
+participant Person
 
 participantgroup device
-participant "view:View\n<<ui>>" as View
-participant "hardware:Hardware\n<<ui>>" as Hardware
+participant View
+
+participant Hardware
 
 end
+participant Control
 
-participant "control:Control\n<<controller>>" as Control
+participant User
+participant RawHealthData
 
-participant "user:User\n<<actor>>" as User
+participant HealthData
 
-participant "healthData:HealthData\n<<actor>>" as HealthData
 
 Person->View: connectButton()
 activate Person
-View->Control: connectToHardware()
-Control->Hardware: Hardware()
+View->Control:connect to hardware
+Control->Hardware:connectToHardware()
+Person->View: choose profile button
+View->User: chosen user
+User->Control:User()
+Person->View:Measure Now button
+View->Control:start new scan
+Control->Hardware:startNewScan()
+Control->Hardware: getBatteryStatus()
 Hardware->Control: isLowPower()
-Hardware->View: isLowPower()
+Control->View: low power warning
+View->Hardware: takeMeasurements()
+Hardware->Hardware: lowers battery
+Hardware->Control: receiveNewScan()
 
-Person->View: measurementsButton()
-View->Hardware: measurement
-Hardware->Control: takeMeasurements()
+Person->View:Measure Now button
+View->Control:start new scan
+Control->Hardware:startNewScan()
+Control->Hardware: getBatteryStatus()
 Hardware->Control: isCriticalPower()
-Hardware->View: isCriticalPower()
-Hardware->Control: gracefulShutdown()
-Control->Hardware: disconnectFromHardware()
+Control->View: critical power warning
+Control->Hardware: gracefulShutdown()
+Control->Hardware:disconnectFromHardware
+Hardware->View: exit
 deactivate Person
+

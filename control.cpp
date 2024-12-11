@@ -230,13 +230,14 @@ int Control::getBatteryStatus() const {
     // 5. save to user
     // 6. display?
 
-RawHealthData* Control::startNewScan() const {
+RawHealthData* Control::startNewScan() {
     if (connectedHardware == NULL) {
         throw std::runtime_error("No connected Hardware");
     }
 
     if (getBatteryStatus() == 0) {
         connectedHardware->gracefulShutdown();
+        disconnectFromHardware();
         return NULL;
     }
     if (currentUser == NULL) {

@@ -13,18 +13,21 @@ Jowi Aoun
   - Traceability Matrix
   - Use case(s): 6, 8
   - User interface
+  - HealthData class
 
 Daniel Chen
   - UML class diagram
   - Sequence diagrams
   - Use case(s): 1, 3, 4, 5, 7
   - User class
+  - RawHealthData class
 
 Yun Nam
   - UML class diagram
   - Sequence diagrams
   - Use case(s): 2, 9, 10
   - Controller Class
+  - RawHealthData class
 
 Amr Moustafa
   - UML class diagram

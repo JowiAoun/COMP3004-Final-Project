@@ -1,6 +1,10 @@
 #ifndef RAWHEALTHDATA_H
 #define RAWHEALTHDATA_H
 
+#include "QString"
+#include <QRandomGenerator>
+
+
 const int SKIN_CONTACT_POINTS = 24;
 const int NUM_DATA = 10;
 

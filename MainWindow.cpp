@@ -36,8 +36,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnCreateProfile, &QPushButton::clicked, this, &MainWindow::on_btnCreateProfile_clicked);
     connect(ui->btnEnter, &QPushButton::clicked, this, &MainWindow::on_btnEnter_clicked);
     connect(ui->btnMetering, &QPushButton::clicked, this, &MainWindow::on_btnMetering_clicked);
+    
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MainWindow::show_battery);
+    timer->start(1000);
 
     this->control = new Control();
+    this->hardware = new Hardware(1);
+    this->control->connectToHardware(this->hardware);
 
     populate_list(ui->listProfiles, this->control->allUsers);
 }
@@ -72,7 +78,16 @@ void MainWindow::populate_list(QListWidget* listWidget, QVector<User>& users) {
 
 MainWindow::~MainWindow()
 {
+    timer->stop();
+    delete timer;
     delete ui;
+}
+
+void MainWindow::show_battery() {
+    if (control->connectedHardware == NULL) {
+        return;
+    }
+    ui->battery->setValue(control->connectedHardware->getBattery());
 }
 
 void MainWindow::on_switchButton_clicked()
