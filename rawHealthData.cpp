@@ -1,11 +1,13 @@
 #include "rawHealthData.h"
 
 RawHealthData::RawHealthData() {    
-    for (int i=0; i<SKIN_CONTACT_POINTS; ++i) {
-        for (int j=0; j<NUM_DATA; ++j) {
-            measurements[i][j] = 0; 
+    for (int i=0; i< SKIN_CONTACT_POINTS; ++i) {
+        // each point gets 10 numbers
+        for (int j=0; j< NUM_DATA; ++j) {
+            measurements[i][j] = QRandomGenerator::global()->bounded(lowerBound, upperBounds[i]);
         }
     }
+
 }
 
 RawHealthData::RawHealthData(int newMeasurements[SKIN_CONTACT_POINTS][NUM_DATA]) {
