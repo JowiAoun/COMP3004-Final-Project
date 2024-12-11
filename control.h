@@ -41,7 +41,7 @@ class Control {
         bool disconnectFromHardware();
         int getBatteryStatus() const;
 
-        RawHealthData* startNewScan() const;
+        RawHealthData* startNewScan();
         bool receiveNewScan(RawHealthData& rawData);
         bool createCharts();
 
