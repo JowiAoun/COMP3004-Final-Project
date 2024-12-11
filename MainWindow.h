@@ -26,7 +26,12 @@ public:
     void on_delete_profile_clicked();
     void on_btnMeasureNow_clicked();
     void on_btnMenu_clicked();
-
+    void on_btnNextStep_clicked();
+    void on_btnClose_clicked();
+    void on_btnHome_clicked();
+    void on_btnLogout_clicked();
+    void on_btnCreateProfile_clicked();
+    void on_btnEnter_clicked();
 
     void populate_list(QListWidget* listWidget, QVector<User>& users);
 
