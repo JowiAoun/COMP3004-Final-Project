@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -386,7 +386,7 @@ QPushButton:hover {
        <string>History</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnCreateProfile_6">
+     <widget class="QPushButton" name="btnMeasureNow1">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -487,7 +487,7 @@ QPushButton:hover {
      <zorder>viewProfilesPushButton</zorder>
      <zorder>btnCreateProfile_4</zorder>
      <zorder>btnCreateProfile_5</zorder>
-     <zorder>btnCreateProfile_6</zorder>
+     <zorder>btnMeasureNow1</zorder>
      <zorder>label_22</zorder>
     </widget>
     <widget class="QWidget" name="page3">
@@ -1026,7 +1026,7 @@ QPushButton:hover {
        <string>Detail</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnMeasureNow">
+     <widget class="QPushButton" name="btnMeasureNow2">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -1064,6 +1064,16 @@ QPushButton:hover {
       </property>
       <property name="text">
        <string/>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="graphScan" native="true">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>100</y>
+        <width>381</width>
+        <height>321</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -1270,6 +1280,36 @@ QPushButton:hover {
       </property>
       <property name="pixmap">
        <pixmap resource="assets/resources.qrc">:/images/point1.png</pixmap>
+      </property>
+     </widget>
+     <widget class="QCustomPlot" name="graphMetering" native="true">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>290</y>
+        <width>381</width>
+        <height>221</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>20</y>
+        <width>81</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Point 1</string>
       </property>
      </widget>
     </widget>
@@ -1554,6 +1594,14 @@ QPushButton:hover {
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header location="global">qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="assets/resources.qrc"/>
  </resources>
