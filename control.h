@@ -52,7 +52,6 @@ class Control {
         void saveUsers();
         User* currentUser;
         QVector<User> allUsers;
-    private:
         Hardware* connectedHardware;
 
 };
