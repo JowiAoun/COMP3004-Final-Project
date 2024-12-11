@@ -167,7 +167,7 @@ HealthData* Control::processData(RawHealthData& rawHealthData) {
     return healthData;
 }
 
-bool Control::saveHealthData(const HealthData& healthData) {
+bool Control::saveHealthData(HealthData& healthData) {
     QVector<HealthData> currentHistoricData = currentUser->getHistoricalHealthData();
     currentHistoricData.append(healthData);
     if (currentUser==NULL) {

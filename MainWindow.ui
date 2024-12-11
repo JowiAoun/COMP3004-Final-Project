@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>9</number>
+     <number>10</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -1285,11 +1285,23 @@ QPushButton:hover {
      <widget class="QCustomPlot" name="graphMetering" native="true">
       <property name="geometry">
        <rect>
-        <x>110</x>
+        <x>19</x>
         <y>290</y>
-        <width>381</width>
-        <height>221</height>
+        <width>560</width>
+        <height>220</height>
        </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>560</width>
+        <height>220</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>560</width>
+        <height>220</height>
+       </size>
       </property>
      </widget>
      <widget class="QLabel" name="labelBodyPoint">

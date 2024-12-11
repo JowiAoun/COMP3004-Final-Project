@@ -33,7 +33,7 @@ class Control {
 
         // Data processing
         HealthData* processData(RawHealthData& rawHealthData);
-        bool saveHealthData(const HealthData& healthData);
+        bool saveHealthData(HealthData& healthData);
         void displayHistoricalData(const QVector<HealthData>& historicalData);
 
         // Hardware
