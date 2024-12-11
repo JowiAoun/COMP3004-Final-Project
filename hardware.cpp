@@ -24,7 +24,7 @@ RawHealthData Hardware::takeMeasurements() {
   return rawhealth;
 }
 
-const bool Hardware::setBatteryPower(int power) {
+bool Hardware::setBatteryPower(int power) {
   // Add validation
   if (power < 0 || power > 100) {
     return false;
@@ -49,7 +49,9 @@ bool Hardware::gracefulShutdown() {
     return true;
   } catch (const std::exception& e) {
     // Log the exception
-    printf("Exception ouccrred: ", e.what());
+    printf("Exception ouccrred: ");
+    printf(e.what());
+
     return false;
   }
 }
