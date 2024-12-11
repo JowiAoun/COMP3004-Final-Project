@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <QListWidget>
+#include <QTimer>
 #include <control.h>
+#include <hardware.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,12 +27,16 @@ public:
     void on_finish_update_profile_clicked();
     void on_delete_profile_clicked();
 
+    void show_battery();
+
 
     void populate_list(QListWidget* listWidget, QVector<User>& users);
 
 private:
     Ui::MainWindow *ui;
     Control* control;
+    Hardware* hardware;
+    QTimer* timer;
 
 };
 #endif // MAINWINDOW_H
