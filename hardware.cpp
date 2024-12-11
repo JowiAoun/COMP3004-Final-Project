@@ -4,14 +4,14 @@
 
 
 Hardware::Hardware(int hardwareid)
-    : hardwareid(hardwareid),
-      battery(100),         // Initialize battery level
+    : battery(100),
+      hardwareid(hardwareid),         // Initialize battery level
       powerConnected(true)  // Initialize power status
 {}
 
-RawHealthData Hardware::takeMeasurements() {
+RawHealthData* Hardware::takeMeasurements() {
   // Create new HealthData object with simulated measurements
-  RawHealthData rawhealth = RawHealthData();
+  RawHealthData* rawhealth = new RawHealthData();
 
   // Simulate taking measurements and populate healthData
 

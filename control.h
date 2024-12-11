@@ -1,8 +1,8 @@
 #ifndef CONTROL_H
 #define CONTROL_H
 
+
 #include "user.h"
-#include "hardware.h"
 #include "healthData.h"
 #include "rawHealthData.h"
 
@@ -10,6 +10,8 @@
 
 #include "QVector"
 #include "QDebug"
+
+class Hardware;
 
 class Control {
     public:
@@ -27,7 +29,7 @@ class Control {
         void saveUser(QString email, const User& user);
         // Authentication
         bool login(QString email);
-        bool createAccount(QString email, QString password, QString name, QString age, QString gender, QString height, QString weight);
+        bool createAccount(QString email, QString name, QString age, QString gender, QString height, QString weight);
 
         // Data processing
         HealthData* processData(RawHealthData& rawHealthData);

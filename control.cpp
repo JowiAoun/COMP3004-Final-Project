@@ -2,8 +2,7 @@
 #define C_LOW_POWER_BATTERY 1
 #define C_CRITICAL_BATTERY 2
 
-
-
+#include "hardware.h"
 #include "control.h"
 
 namespace{
@@ -114,7 +113,7 @@ bool Control::login(QString email) {
     return true;
 }
 
-bool Control::createAccount(QString email, QString password, QString name, QString age, QString gender, QString height, QString weight) {
+bool Control::createAccount(QString email, QString name, QString age, QString gender, QString height, QString weight) {
     bool userExists = false;
     // if user already exists
     for (int i=0; i<allUsers.size(); ++i) {
@@ -275,7 +274,7 @@ bool Control::receiveNewScan(RawHealthData& rawData) {
 bool Control::createCharts() {
     // TODO
 
-
+    return false;
 }
 
 void Control::setCurrentUser(User* user) {
