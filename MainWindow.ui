@@ -30,7 +30,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>6</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="page0">
      <widget class="QLabel" name="label_6">
@@ -282,7 +282,7 @@ QPushButton:hover {
      <zorder>btnEnter</zorder>
     </widget>
     <widget class="QWidget" name="page2">
-     <widget class="QPushButton" name="btnCreateProfile_2">
+     <widget class="QPushButton" name="btnLogout">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -334,7 +334,7 @@ QPushButton:hover {
        <string>Profiles</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnCreateProfile_4">
+     <widget class="QPushButton" name="btnHome">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -483,9 +483,9 @@ QPushButton:hover {
       </widget>
      </widget>
      <zorder>frame_4</zorder>
-     <zorder>btnCreateProfile_2</zorder>
+     <zorder>btnLogout</zorder>
      <zorder>viewProfilesPushButton</zorder>
-     <zorder>btnCreateProfile_4</zorder>
+     <zorder>btnHome</zorder>
      <zorder>btnCreateProfile_5</zorder>
      <zorder>btnMeasureNow1</zorder>
      <zorder>label_22</zorder>
@@ -1098,7 +1098,7 @@ QPushButton:hover {
        <string>How to hold RaDoTech</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnConnect_2">
+     <widget class="QPushButton" name="btnNextStep">
       <property name="geometry">
        <rect>
         <x>190</x>
@@ -1163,7 +1163,7 @@ QPushButton:hover {
        <string>Attention</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnConnect_3">
+     <widget class="QPushButton" name="btnClose">
       <property name="geometry">
        <rect>
         <x>190</x>
