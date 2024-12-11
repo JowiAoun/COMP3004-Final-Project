@@ -246,13 +246,14 @@ void MainWindow::on_btnEnter_clicked() {
     stackedWidget->setCurrentIndex(5);
 }
 
-int point = 1;
+int point = 0;
+int measurements[24][10];
+
 void MainWindow::on_btnMetering_clicked() {
     QPushButton *btnMetering = ui->btnMetering;
-
     btnMetering->setText("PRESS");
 
-    QString imagePath = QString(":/images/point%1.png").arg(point);
+    QString imagePath = QString(":/images/point%1.png").arg(point + 1);  // Adjust the point number for images
     QPixmap pixmap(imagePath);
     if (!pixmap.isNull()) {
         ui->imageBodyPoint->setPixmap(pixmap);
@@ -261,40 +262,65 @@ void MainWindow::on_btnMetering_clicked() {
         qDebug() << "Failed to load image:" << imagePath;
     }
 
-    ui->labelBodyPoint->setText(QString("Point %1").arg(point));
+    ui->labelBodyPoint->setText(QString("Point %1").arg(point + 1));
 
-    if (point == 3) {
-        int measurements[24][10];
+    if (point == 0) {
+        // Simulate the measurements for 24 skin contact points, each with 10 measurements
         int lowerBound = 5;
-        int upperBounds[24] = { 191, 191, 171, 171, 151, 151, 171, 171, 201, 201, 201, 201, 161, 161, 131, 131, 151, 151, 151,151,  131, 131, 151, 151};
+        int upperBounds[24] = {191, 191, 171, 171, 151, 151, 171, 171, 201, 201, 201, 201, 161, 161, 131, 131, 151, 151, 151, 151, 131, 131, 151, 151};
+
         QString skinContactPoints[24] = { "H1-L", "H1-R", "H2-L", "H2-R", "H3-L", "H3-R", "H4-L", "H4-R", "H5-L", "H5-R", "H6-L", "H6-R",
                                           "F1-L", "F1-R", "F2-L", "F2-R", "F3-L", "F3-R", "F4-L", "F4-R", "F5-L", "F5-R", "F6-L", "F6-R"};
 
-        for (int i=0; i< 24; ++i) {
-            for (int j=0; j< 10; ++j) {
+        // Populate the measurements array with random values
+        for (int i = 0; i < 24; ++i) {
+            for (int j = 0; j < 10; ++j) {
                 measurements[i][j] = QRandomGenerator::global()->bounded(lowerBound, upperBounds[i]);
             }
         }
-        RawHealthData rawHealthData(measurements);
 
-        for (int i=0; i< 24; ++i) {
+        RawHealthData rawHealthData(measurements);  // Assuming RawHealthData is a class that takes 2D data
+
+        // Print the data to debug
+        for (int i = 0; i < 24; ++i) {
             QDebug debug = qDebug();
             debug << skinContactPoints[i] << ":";
-            for (int j=0; j< 10; ++j) {
+            for (int j = 0; j < 10; ++j) {
                 debug << measurements[i][j];
             }
         }
-
-        HealthData* newHealthData = this->control->processData(rawHealthData);
-        qDebug() << "Display processed Data:" << newHealthData->displayData();
-
-
-
-//        this->control->saveHealthData(*newHealthData);
-
-        point = 0;
     }
 
+    // Update the graph with the data for the current point
+    updateGraphData(point);
+
+    // Move to the next point
     ++point;
+    if (point >= 24) {
+        point = 0;
+    }
 }
 
+void MainWindow::updateGraphData(int point) {
+    // Get the measurements for the current point
+    QVector<double> xData, yData;
+
+    for (int i = 0; i < 10; ++i) {
+        xData.append(i);  // X axis values (0, 1, 2, ..., 9)
+        yData.append(measurements[point][i]);  // Y axis values (measurement data)
+    }
+
+    // Clear any previous data in the graph
+    ui->graphMetering->clearGraphs();
+
+    // Create a new bar chart
+    QCPBars *bars = new QCPBars(ui->graphMetering->xAxis, ui->graphMetering->yAxis);
+    bars->setData(xData, yData);
+
+    // Set graph styling (optional)
+    bars->setPen(QPen(Qt::blue));  // Set border color of bars
+    bars->setBrush(QBrush(Qt::blue));  // Set fill color of bars
+
+    // Redraw the graph
+    ui->graphMetering->replot();
+}
