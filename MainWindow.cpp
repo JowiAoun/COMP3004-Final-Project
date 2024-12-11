@@ -35,7 +35,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnLogout, &QPushButton::clicked, this, &MainWindow::on_btnLogout_clicked);
     connect(ui->btnCreateProfile, &QPushButton::clicked, this, &MainWindow::on_btnCreateProfile_clicked);
     connect(ui->btnEnter, &QPushButton::clicked, this, &MainWindow::on_btnEnter_clicked);
-
+    connect(ui->btnMetering, &QPushButton::clicked, this, &MainWindow::on_btnMetering_clicked);
 
     this->control = new Control();
 
@@ -230,3 +230,56 @@ void MainWindow::on_btnEnter_clicked() {
     QStackedWidget *stackedWidget = ui->stackedWidget;
     stackedWidget->setCurrentIndex(5);
 }
+
+int point = 1;
+void MainWindow::on_btnMetering_clicked() {
+    QPushButton *btnMetering = ui->btnMetering;
+
+    btnMetering->setText("PRESS");
+
+    QString imagePath = QString(":/images/point%1.png").arg(point);
+    QPixmap pixmap(imagePath);
+    if (!pixmap.isNull()) {
+        ui->imageBodyPoint->setPixmap(pixmap);
+        ui->imageBodyPoint->setScaledContents(true);
+    } else {
+        qDebug() << "Failed to load image:" << imagePath;
+    }
+
+    ui->labelBodyPoint->setText(QString("Point %1").arg(point));
+
+    if (point == 3) {
+        int measurements[24][10];
+        int lowerBound = 5;
+        int upperBounds[24] = { 191, 191, 171, 171, 151, 151, 171, 171, 201, 201, 201, 201, 161, 161, 131, 131, 151, 151, 151,151,  131, 131, 151, 151};
+        QString skinContactPoints[24] = { "H1-L", "H1-R", "H2-L", "H2-R", "H3-L", "H3-R", "H4-L", "H4-R", "H5-L", "H5-R", "H6-L", "H6-R",
+                                          "F1-L", "F1-R", "F2-L", "F2-R", "F3-L", "F3-R", "F4-L", "F4-R", "F5-L", "F5-R", "F6-L", "F6-R"};
+
+        for (int i=0; i< 24; ++i) {
+            for (int j=0; j< 10; ++j) {
+                measurements[i][j] = QRandomGenerator::global()->bounded(lowerBound, upperBounds[i]);
+            }
+        }
+        RawHealthData rawHealthData(measurements);
+
+        for (int i=0; i< 24; ++i) {
+            QDebug debug = qDebug();
+            debug << skinContactPoints[i] << ":";
+            for (int j=0; j< 10; ++j) {
+                debug << measurements[i][j];
+            }
+        }
+
+        HealthData* newHealthData = this->control->processData(rawHealthData);
+        qDebug() << "Display processed Data:" << newHealthData->displayData();
+
+
+
+//        this->control->saveHealthData(*newHealthData);
+
+        point = 0;
+    }
+
+    ++point;
+}
+

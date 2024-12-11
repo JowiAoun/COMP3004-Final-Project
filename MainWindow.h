@@ -32,6 +32,7 @@ public:
     void on_btnLogout_clicked();
     void on_btnCreateProfile_clicked();
     void on_btnEnter_clicked();
+    void on_btnMetering_clicked();
 
     void populate_list(QListWidget* listWidget, QVector<User>& users);
 
