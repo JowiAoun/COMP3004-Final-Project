@@ -9,9 +9,9 @@ Hardware::Hardware(int hardwareid)
       powerConnected(true)  // Initialize power status
 {}
 
-RawHealthData* Hardware::takeMeasurements() {
+RawHealthData Hardware::takeMeasurements() {
   // Create new HealthData object with simulated measurements
-  RawHealthData = new RawHealthData();
+  RawHealthData rawhealth = RawHealthData();
 
   // Simulate taking measurements and populate healthData
 
@@ -21,7 +21,7 @@ RawHealthData* Hardware::takeMeasurements() {
   // Ensure battery doesn't go below 0
   this->battery = std::max(0, this->battery);
 
-  return healthData;
+  return rawhealth;
 }
 
 const bool Hardware::setBatteryPower(int power) {
@@ -42,7 +42,7 @@ bool Hardware::gracefulShutdown() {
 
     // disconnect hardware
     this->powerConnected = false;
-s
+
     // any additional cleanup here
 
     exit(0);
