@@ -33,6 +33,7 @@ public:
     void on_btnCreateProfile_clicked();
     void on_btnEnter_clicked();
     void on_btnMetering_clicked();
+    void updateGraphData(int point);
 
     void populate_list(QListWidget* listWidget, QVector<User>& users);
 
