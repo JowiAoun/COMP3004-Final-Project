@@ -234,7 +234,6 @@ RawHealthData* Control::startNewScan() const {
     }
 
     if (getBatteryStatus() == 0) {
-        saveUser(currentUser->getEmail(), currentUser);
         connectedHardware->gracefulShutdown();
         return NULL;
     }
