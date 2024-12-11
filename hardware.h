@@ -19,7 +19,7 @@ class Hardware {
 
   bool isLowPower();
   bool isCriticalPower();
-  bool gracefulShutdown(Control& controlInstance);
+  bool gracefulShutdown();
   bool connectionLoss();
   const bool setBatteryPower(int power);
   int getBattery() const;

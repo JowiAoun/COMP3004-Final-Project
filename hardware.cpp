@@ -11,7 +11,7 @@ Hardware::Hardware(int hardwareid)
 
 RawHealthData* Hardware::takeMeasurements() {
   // Create new HealthData object with simulated measurements
-  auto* healthData = new HealthData();
+  RawHealthData = new RawHealthData();
 
   // Simulate taking measurements and populate healthData
 
@@ -37,27 +37,12 @@ bool Hardware::isLowPower() { return (this->battery <= 15 && this->battery > 5);
 
 bool Hardware::isCriticalPower() { return (this->battery <= 5); }
 
-bool Hardware::gracefulShutdown(Control& controlInstance) {
+bool Hardware::gracefulShutdown() {
   try {
-    User* user = controlInstance.getCurrentUser();
-    if (!user) {
-      return false;
-    }
-
-    QString email = user->getEmail();
-    if (email.isEmpty()) {
-      return false;
-    }
-
-    if (!controlInstance.saveUser(email, *user)) {
-      // Log the error here
-      return false;
-    }
 
     // disconnect hardware
     this->powerConnected = false;
-    controlInstance.disconnectFromHardware();
-
+s
     // any additional cleanup here
 
     exit(0);
