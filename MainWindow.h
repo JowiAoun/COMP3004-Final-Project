@@ -31,6 +31,12 @@ public:
 
     void show_battery();
 
+    void on_btnNextStep_clicked();
+    void on_btnClose_clicked();
+    void on_btnHome_clicked();
+    void on_btnLogout_clicked();
+    void on_btnCreateProfile_clicked();
+    void on_btnEnter_clicked();
 
     void populate_list(QListWidget* listWidget, QVector<User>& users);
 

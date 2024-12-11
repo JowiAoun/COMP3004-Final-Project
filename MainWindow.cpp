@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     this->control = NULL;
     ui->setupUi(this);
 
+    ui->stackedWidget->setCurrentIndex(0);
+
     // Get the stacked widget and the button from the UI
     ui->createAge->setValidator(new QIntValidator(0, 150, this));
     ui->createHeight->setValidator(new QDoubleValidator(0, 999, 2, this));
@@ -31,6 +33,13 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnMeasureNow1, &QPushButton::clicked, this, &MainWindow::on_btnMeasureNow_clicked);
     connect(ui->btnMeasureNow2, &QPushButton::clicked, this, &MainWindow::on_btnMeasureNow_clicked);
     connect(ui->btnMenu, &QPushButton::clicked, this, &MainWindow::on_btnMenu_clicked);
+    connect(ui->btnNextStep, &QPushButton::clicked, this, &MainWindow::on_btnNextStep_clicked);
+    connect(ui->btnClose, &QPushButton::clicked, this, &MainWindow::on_btnClose_clicked);
+    connect(ui->btnHome, &QPushButton::clicked, this, &MainWindow::on_btnHome_clicked);
+    connect(ui->btnLogout, &QPushButton::clicked, this, &MainWindow::on_btnLogout_clicked);
+    connect(ui->btnCreateProfile, &QPushButton::clicked, this, &MainWindow::on_btnCreateProfile_clicked);
+    connect(ui->btnEnter, &QPushButton::clicked, this, &MainWindow::on_btnEnter_clicked);
+
 
     this->control = new Control();
     this->hardware = new Hardware(1);
@@ -198,12 +207,41 @@ void MainWindow::on_delete_profile_clicked() {
 }
 
 void MainWindow::on_btnMeasureNow_clicked() {
-    QStackedWidget *stackedWidget = ui->stackedWidget;;
+    QStackedWidget *stackedWidget = ui->stackedWidget;
     stackedWidget->setCurrentIndex(7);
 }
 
 void MainWindow::on_btnMenu_clicked() {
-    QStackedWidget *stackedWidget = ui->stackedWidget;;
+    QStackedWidget *stackedWidget = ui->stackedWidget;
     stackedWidget->setCurrentIndex(2);
 }
 
+void MainWindow::on_btnNextStep_clicked() {
+    QStackedWidget *stackedWidget = ui->stackedWidget;
+    stackedWidget->setCurrentIndex(8);
+}
+
+void MainWindow::on_btnClose_clicked() {
+    QStackedWidget *stackedWidget = ui->stackedWidget;
+    stackedWidget->setCurrentIndex(9);
+}
+
+void MainWindow::on_btnHome_clicked() {
+    QStackedWidget *stackedWidget = ui->stackedWidget;
+    stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::on_btnLogout_clicked() {
+    QStackedWidget *stackedWidget = ui->stackedWidget;
+    stackedWidget->setCurrentIndex(5);
+}
+
+void MainWindow::on_btnCreateProfile_clicked() {
+    QStackedWidget *stackedWidget = ui->stackedWidget;
+    stackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::on_btnEnter_clicked() {
+    QStackedWidget *stackedWidget = ui->stackedWidget;
+    stackedWidget->setCurrentIndex(5);
+}
