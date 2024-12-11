@@ -1,6 +1,10 @@
 # COMP3004-Final-Project
 Final project for the class of COMP3004, team number 21.
 
+# Setup
+
+Run `sudo apt-get install libboost-all-dev` to install boost
+
 
 ## Team members & Contributions
 Jowi Aoun
