@@ -279,8 +279,6 @@ void MainWindow::on_btnMetering_clicked() {
             }
         }
 
-        RawHealthData rawHealthData(measurements);  // Assuming RawHealthData is a class that takes 2D data
-
         // Print the data to debug
         for (int i = 0; i < 24; ++i) {
             QDebug debug = qDebug();
@@ -298,28 +296,61 @@ void MainWindow::on_btnMetering_clicked() {
     ++point;
     if (point >= 24) {
         point = 0;
+
+        ui->stackedWidget->setCurrentIndex(10);
+
+        RawHealthData* rawHealthData = new RawHealthData(measurements);
+
+        // Data processing
+        HealthData* newHealthData = this->control->processData(*rawHealthData);
+        qDebug() << "Display processed Data:" << newHealthData->displayData();
+
+        // TODO: save data to current user
+//        this->control->saveHealthData(*newHealthData);
+
+        QString energyString = QString::number(newHealthData->getEnergyLevel(), 'f', 2);
+        QString immuneString = QString::number(newHealthData->getImmuneSystem(), 'f', 2);
+        QString metabolismString = QString::number(newHealthData->getMetabolism(), 'f', 2);
+        QString musculoString = QString::number(newHealthData->getMusculoskeletalSystem(), 'f', 2);
+        QString psychoString = QString::number(newHealthData->getPsychoEmotionalState(), 'f', 2);
+        QString averageString = QString::number(newHealthData->getAverage(), 'f', 2);
+
+        ui->labelEnergy->setText(energyString);
+        ui->labelImmune->setText(immuneString);
+        ui->labelMetabolism->setText(metabolismString);
+        ui->labelMusculo->setText(musculoString);
+        ui->labelPsycho->setText(psychoString);
+        ui->labelAverage->setText(averageString);
     }
 }
 
 void MainWindow::updateGraphData(int point) {
     // Get the measurements for the current point
     QVector<double> xData, yData;
+    QCPBars *bars = nullptr;
 
+    // X axis values (1 to 10)
     for (int i = 0; i < 10; ++i) {
-        xData.append(i);  // X axis values (0, 1, 2, ..., 9)
-        yData.append(measurements[point][i]);  // Y axis values (measurement data)
+        xData.append(i + 1);  // X axis values are now 1, 2, ..., 10
+        yData.append(measurements[point][i]);  // Y axis values from the measurements array
+        qDebug() << "Measurement:" << measurements[point][i];
     }
 
     // Clear any previous data in the graph
+    ui->graphMetering->xAxis->setRange(0, 11);
+    ui->graphMetering->yAxis->setRange(0, 250);
     ui->graphMetering->clearGraphs();
 
     // Create a new bar chart
-    QCPBars *bars = new QCPBars(ui->graphMetering->xAxis, ui->graphMetering->yAxis);
+    bars = new QCPBars(ui->graphMetering->xAxis, ui->graphMetering->yAxis);
     bars->setData(xData, yData);
 
-    // Set graph styling (optional)
     bars->setPen(QPen(Qt::blue));  // Set border color of bars
     bars->setBrush(QBrush(Qt::blue));  // Set fill color of bars
+
+    // Set axis labels (optional, you can customize as needed)
+    ui->graphMetering->xAxis->setLabel("Measurement Number");  // Label for X axis
+    ui->graphMetering->yAxis->setLabel("Measurement Value");    // Label for Y axis
 
     // Redraw the graph
     ui->graphMetering->replot();
