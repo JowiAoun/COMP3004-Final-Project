@@ -43,7 +43,7 @@ class Control {
 
         RawHealthData* startNewScan() const;
         bool receiveNewScan(RawHealthData& rawData);
-        bool createCharts();
+        QVector<float> createCharts();
 
         void deleteCurrentUser();
 

@@ -260,8 +260,6 @@ bool Control::receiveNewScan(RawHealthData& rawData) {
     if (saveHealthData(*processedData)) {
         QVector<HealthData> historicalData = currentUser->getHistoricalHealthData();
         displayHistoricalData(historicalData);
-        // TODO:
-        createCharts();
         delete processedData;
         return true;
     }
@@ -270,11 +268,53 @@ bool Control::receiveNewScan(RawHealthData& rawData) {
 }
  
 
+// TODO: change in accordance with the ui
+QVector<float> Control::createCharts() {
+    /* 
+    if (currentUser == NULL) {
+        throw std::runtime_error("No current user");
+    }
+    QVector<HealthData> historicalData = currentUser->getHistoricalHealthData();
+    float energyLevel = 0.0f;
+    float immuneSystemLevels = 0.0f;
+    float metabolismLevels = 0.0f;
+    float psychoEmotionalStateLevels = 0.0f;
+    float musculoskeletalSystemLevels = 0.0f;
+    float historicalDataAvailable = 0.0f;
 
-bool Control::createCharts() {
-    // TODO
+    for (int i=0; i<historicalData.size(); ++i) {
+        energyLevel += historicalData[i].getEnergyLevel();
+        immuneSystemLevels += historicalData[i].getImmuneSystem();
+        metabolismLevels += historicalData[i].getMetabolism();
+        psychoEmotionalStateLevels += historicalData[i].getPsychoEmotionalState();
+        musculoskeletalSystemLevels += historicalData[i].getMusculoskeletalSystem();
+        historicalDataAvailable += 1.0f;
+    }
+    // average
+    energyLevel /= historicalData.size();
+    immuneSystemLevels /= historicalData.size();
+    metabolismLevels /= historicalData.size();
+    psychoEmotionalStateLevels /= historicalData.size();
+    musculoskeletalSystemLevels /= historicalData.size();
 
-    return false;
+    // levels
+    energyLevel /= 200.0f;
+    immuneSystemLevels /= 190.0f;
+    metabolismLevels /= 200.0f;
+    psychoEmotionalStateLevels /= 180.0f;
+    musculoskeletalSystemLevels /= 170.0f;
+
+    QVector<float> levels;
+    levels.append(energyLevel);
+    levels.append(immuneSystemLevels);
+    levels.append(metabolismLevels);
+    levels.append(psychoEmotionalStateLevels);
+    levels.append(musculoskeletalSystemLevels);
+    levels.append(historicalDataAvailable);
+    return levels;
+    */
+    QVector<float> levels
+   return NULL
 }
 
 void Control::setCurrentUser(User* user) {
