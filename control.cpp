@@ -237,6 +237,7 @@ RawHealthData* Control::startNewScan() const {
 
     if (getBatteryStatus() == 0) {
         connectedHardware->gracefulShutdown();
+        disconnectFromHardware();
         return NULL;
     }
     if (currentUser == NULL) {
